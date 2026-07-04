@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academic Planner — Alex Rivera</title>
+  <meta name="description" content="Interactive academic task dashboard: add, track, and complete coursework tasks.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-nav">
+    <div class="wrap nav-inner">
+      <a href="index.html" class="nav-mark">Alex<span>.</span>Rivera</a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="planner.html">Planner</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation menu">
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-intro">
+      <div class="wrap">
+        <span class="eyebrow">Academic Planner</span>
+        <h1>The dashboard I actually use.</h1>
+        <p>Add a task, move it across the board, and it saves right in your browser — no login required.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="dashboard">
+          <div class="dashboard-chrome">
+            <div class="chrome-dots"><span></span><span></span><span></span></div>
+            <div class="chrome-title">academic-planner — semester_2026</div>
+            <div class="chrome-title">STATUS: <span style="color: var(--teal-bright);">SYNCED</span></div>
+          </div>
+
+          <div class="dashboard-stats">
+            <div class="stat-tile">
+              <div class="num" data-stat="total">0</div>
+              <div class="label">Total tasks</div>
+            </div>
+            <div class="stat-tile">
+              <div class="num" data-stat="completed">0</div>
+              <div class="label">Completed</div>
+            </div>
+            <div class="stat-tile">
+              <div class="num" data-stat="overdue">0</div>
+              <div class="label">Overdue</div>
+            </div>
+            <div class="stat-tile">
+              <div class="num" data-stat="rate">0%</div>
+              <div class="label">Completion rate</div>
+            </div>
+          </div>
+
+          <div class="dashboard-body">
+            <form id="task-form" class="task-form" aria-label="Add a new task">
+              <input type="text" name="title" placeholder="Task name, e.g. Read Chapter 6" required aria-label="Task name">
+              <input type="date" name="due" aria-label="Due date">
+              <select name="priority" aria-label="Priority">
+                <option value="low">Low priority</option>
+                <option value="medium" selected>Medium priority</option>
+                <option value="high">High priority</option>
+              </select>
+              <button type="submit" class="btn btn-primary">Add task</button>
+            </form>
+
+            <div class="board">
+              <div class="board-col">
+                <h4>To Do <span class="count" data-count="todo">0</span></h4>
+                <div class="task-list" data-list="todo"></div>
+              </div>
+              <div class="board-col">
+                <h4>In Progress <span class="count" data-count="in-progress">0</span></h4>
+                <div class="task-list" data-list="in-progress"></div>
+              </div>
+              <div class="board-col">
+                <h4>Done <span class="count" data-count="done">0</span></h4>
+                <div class="task-list" data-list="done"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span>© <span data-year></span> Alex Rivera. Built for Meridian State University.</span>
+      <div class="footer-links">
+        <a href="contact.html">Contact</a>
+        <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/planner.js"></script>
+</body>
+</html>
+
