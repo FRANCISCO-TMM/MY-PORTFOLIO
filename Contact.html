@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Alex Rivera</title>
+  <meta name="description" content="Get in touch with Alex Rivera for internships, collaborations, or questions.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-nav">
+    <div class="wrap nav-inner">
+      <a href="index.html" class="nav-mark">Alex<span>.</span>Rivera</a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="planner.html">Planner</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation menu">
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-intro">
+      <div class="wrap">
+        <span class="eyebrow">Get in touch</span>
+        <h1>Let's talk about internships or projects.</h1>
+        <p>Send a message below — I try to reply within a couple of days.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="contact-layout">
+          <div class="contact-info">
+            <h2>Alex Rivera</h2>
+            <p>Computer Science student concentrating in cybersecurity at Meridian State University. Open to summer internships and collaborative projects.</p>
+            <div class="contact-detail">
+              <span>Email</span>
+              <span>alex.rivera@student.meridianstate.edu</span>
+            </div>
+            <div class="contact-detail">
+              <span>Location</span>
+              <span>Meridian, California</span>
+            </div>
+            <div class="contact-detail">
+              <span>Elsewhere</span>
+              <span>github.com/alexrivera · linkedin.com/in/alexrivera</span>
+            </div>
+            <div class="status-bar">
+              <span><span class="dot"></span>USUALLY REPLIES WITHIN 48H</span>
+            </div>
+          </div>
+
+          <div class="contact-form-wrap">
+            <form id="contact-form" novalidate>
+              <div class="form-field">
+                <label for="name">Full name</label>
+                <input type="text" id="name" name="name" placeholder="Jordan Lee" required>
+                <span class="field-error"></span>
+              </div>
+              <div class="form-field">
+                <label for="email">Email address</label>
+                <input type="email" id="email" name="email" placeholder="jordan@example.com" required>
+                <span class="field-error"></span>
+              </div>
+              <div class="form-field">
+                <label for="phone">Phone number</label>
+                <input type="tel" id="phone" name="phone" placeholder="5551234567" required>
+                <span class="field-error"></span>
+              </div>
+              <div class="form-field">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Tell me a bit about the opportunity or question..." required></textarea>
+                <span class="field-error"></span>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Send message</button>
+              <div class="form-status" role="status" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span>© <span data-year></span> Alex Rivera. Built for Meridian State University.</span>
+      <div class="footer-links">
+        <a href="contact.html">Contact</a>
+        <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/contact.js"></script>
+</body>
+</html>
+
