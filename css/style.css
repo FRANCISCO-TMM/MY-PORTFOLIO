@@ -712,3 +712,14 @@ p { margin: 0; }
 .page-intro { padding-block: clamp(3rem, 7vw, 5rem) 1rem; background: var(--ink); color: var(--paper); }
 .page-intro h1 { font-size: clamp(2.1rem, 4vw, 3.2rem); margin-top: 0.6rem; }
 .page-intro p { color: var(--mist); max-width: 56ch; margin-top: 1rem; }
+@keyframes float { 
+  0% { transform: translateY(0px); } 
+  50% { transform: translateY(-10px); } 
+  100% { transform: translateY(0px); } 
+}
+
+.floating-text { 
+  animation: float 3s ease-in-out infinite; 
+  display: inline-block; 
+}
+
