@@ -1,0 +1,96 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="baseBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#081026"/>
+      <stop offset="45%" stop-color="#132352"/>
+      <stop offset="100%" stop-color="#0D1A3E"/>
+    </linearGradient>
+    <linearGradient id="seamBlend" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0D1A3E" stop-opacity="1"/>
+      <stop offset="82%" stop-color="#0D1A3E" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#F7F5EF" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="goldSheen" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0"/>
+      <stop offset="48%" stop-color="#F1D27A" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#D4AF37" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="goldGlowTL" cx="15%" cy="10%" r="55%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.20"/>
+      <stop offset="100%" stop-color="#D4AF37" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="tealGlowBL" cx="8%" cy="95%" r="45%">
+      <stop offset="0%" stop-color="#22A6A0" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#22A6A0" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Base fill: royal blue field with an ivory panel bleeding in on the right -->
+  <rect width="1600" height="1000" fill="url(#baseBlue)"/>
+  <rect width="1600" height="1000" fill="url(#seamBlend)"/>
+  <rect x="1300" width="300" height="1000" fill="#F7F5EF"/>
+  <rect x="1250" width="80" height="1000" fill="#F7F5EF" opacity="0.5"/>
+
+  <!-- Ambient glows -->
+  <rect width="1600" height="1000" fill="url(#goldGlowTL)"/>
+  <rect width="1600" height="1000" fill="url(#tealGlowBL)"/>
+  <rect width="1600" height="1000" fill="url(#goldSheen)"/>
+
+  <!-- Circuit traces (continuous across the seam) -->
+  <g fill="none" stroke="#D4AF37" stroke-width="1.4" opacity="0.22" stroke-linecap="round">
+    <path d="M 60 120 H 260 V 220 H 460 V 160 H 720"/>
+    <path d="M 90 860 H 320 V 760 H 560 V 820 H 900 V 740 H 1180"/>
+    <path d="M 720 60 V 220 H 980 V 340"/>
+    <path d="M 1180 740 V 560 H 1420 V 460"/>
+    <path d="M 40 480 H 220 V 540 H 380"/>
+    <path d="M 980 340 H 1220 V 180 H 1460"/>
+  </g>
+  <g fill="#D4AF37" opacity="0.35">
+    <circle cx="260" cy="120" r="4"/>
+    <circle cx="460" cy="220" r="4"/>
+    <circle cx="720" cy="160" r="4"/>
+    <circle cx="320" cy="860" r="4"/>
+    <circle cx="560" cy="760" r="4"/>
+    <circle cx="900" cy="820" r="4"/>
+    <circle cx="1180" cy="740" r="4"/>
+    <circle cx="980" cy="220" r="4"/>
+    <circle cx="1420" cy="560" r="4"/>
+    <circle cx="1220" cy="340" r="4"/>
+    <circle cx="1460" cy="180" r="4"/>
+  </g>
+
+  <!-- Threat-intelligence radar motif, upper-left of the dark field -->
+  <g transform="translate(250,260)" opacity="0.5">
+    <circle r="150" fill="none" stroke="#2FC3BC" stroke-width="1" opacity="0.35"/>
+    <circle r="105" fill="none" stroke="#2FC3BC" stroke-width="1" opacity="0.3"/>
+    <circle r="60" fill="none" stroke="#2FC3BC" stroke-width="1" opacity="0.25"/>
+    <line x1="0" y1="0" x2="150" y2="-40" stroke="#2FC3BC" stroke-width="1.2" opacity="0.4"/>
+    <circle cx="90" cy="-70" r="3.5" fill="#F1D27A"/>
+    <circle cx="-110" cy="60" r="3" fill="#2FC3BC"/>
+    <circle cx="40" cy="120" r="2.5" fill="#2FC3BC"/>
+  </g>
+
+  <!-- Digital-forensics fingerprint motif, lower-right on the ivory panel -->
+  <g transform="translate(1420,760)" opacity="0.16">
+    <path d="M 0,-90 C 55,-90 95,-45 95,0 C 95,45 55,90 0,90 C -55,90 -95,45 -95,0 C -95,-45 -55,-90 0,-90 Z" fill="none" stroke="#0A1230" stroke-width="3"/>
+    <path d="M 0,-65 C 40,-65 70,-33 70,0 C 70,33 40,65 0,65 C -40,65 -70,33 -70,0 C -70,-33 -40,-65 0,-65 Z" fill="none" stroke="#0A1230" stroke-width="3"/>
+    <path d="M 0,-40 C 25,-40 45,-20 45,0 C 45,20 25,40 0,40 C -25,40 -45,20 -45,0 C -45,-20 -25,-40 0,-40 Z" fill="none" stroke="#D4AF37" stroke-width="3"/>
+    <line x1="0" y1="-115" x2="0" y2="-95" stroke="#0A1230" stroke-width="3"/>
+    <line x1="0" y1="95" x2="0" y2="115" stroke="#0A1230" stroke-width="3"/>
+  </g>
+
+  <!-- Shield + lock motif, dark field, lower area -->
+  <g transform="translate(560,880)" opacity="0.14">
+    <path d="M0,-60 L54,-40 L54,10 C54,50 27,75 0,90 C-27,75 -54,50 -54,10 L-54,-40 Z" fill="none" stroke="#F1D27A" stroke-width="3"/>
+    <rect x="-16" y="0" width="32" height="24" rx="4" fill="none" stroke="#F1D27A" stroke-width="3"/>
+    <path d="M-10,0 V-10 A10,10 0 0 1 10,-10 V0" fill="none" stroke="#F1D27A" stroke-width="3"/>
+  </g>
+
+  <!-- Binary code clusters -->
+  <g fill="#AAB4D4" font-family="monospace" font-size="13" opacity="0.22">
+    <text x="80" y="620">01001 11010 00110</text>
+    <text x="640" y="120">10110 01001 11001</text>
+    <text x="900" y="900">00101 11010 01100</text>
+    <text x="1120" y="240">11001 00110 10101</text>
+  </g>
+</svg>
