@@ -79,12 +79,12 @@
 html { scroll-behavior: smooth; }
 html, body { overflow-x: hidden; width: 100%; }
 body {
-  margin: 0;
-  font-family: var(--font-body);
-  color: var(--ink);
-  background: var(--paper);
-  -webkit-font-smoothing: antialiased;
-  line-height: 1.6;
+    margin: 0;
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: linear-gradient(165deg, #0A1230 0%, #132352 55%, #0D1A3E 100%);
+}
+
 }
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
