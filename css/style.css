@@ -77,6 +77,7 @@
 /* ---------- Reset ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+html, body { overflow-x: hidden; width: 100%; }
 body {
   margin: 0;
   font-family: var(--font-body);
@@ -190,7 +191,12 @@ p { margin: 0; }
   font-weight: 600;
   letter-spacing: 0.03em;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 62vw;
+  flex-shrink: 1;
 }
+.nav-inner { flex-wrap: nowrap; }
 .nav-mark span { color: var(--gold-bright); }
 .nav-links {
   display: flex;
@@ -415,7 +421,12 @@ p { margin: 0; }
   font-size: 0.7rem;
   letter-spacing: 0.05em;
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.3em 0.8em;
   justify-content: space-between;
+}
+@media (max-width: 420px) {
+  .avatar-tag { font-size: 0.62rem; padding: 0.6em 0.8em; }
 }
 
 .avatar-frame {
@@ -604,109 +615,216 @@ p { margin: 0; }
 }
 
 /* ============================================================
-   HERO CORNER WRITE-UPS — small cybersecurity-themed callouts
-   in the 4 corners of the split hero (top-left, bottom-left,
-   top-right, bottom-right), each with a tiny "live" element
-   (blinking cursor or a rotating radar sweep). They're
-   pointer-events: none so they never block clicks on buttons
-   or the photo, and they respect prefers-reduced-motion.
+   HERO GALACTIC HUD PANELS
+   Four bold, glass-panel "instrument readouts" anchored to the
+   corners of the split hero, each carrying a live animated SVG
+   (waveform / radar sweep / scan beam / orbiting nodes). Built
+   to read as a futuristic SOC command-center overlay.
+
+   Shown only from 1100px wide with enough vertical room
+   (min-height 640px) — this is a deliberate fix for the
+   overlap issue: below that, the hero switches to a single
+   stacked column and there simply isn't safe space for these
+   without colliding with the heading or the photo, so they're
+   hidden entirely rather than fighting for room. Everything is
+   pointer-events: none so they never block a click.
    ============================================================ */
-.hero-writeup {
+.hero-hud {
   position: absolute;
-  z-index: 2;
-  max-width: 190px;
-  background: rgba(10, 18, 48, 0.62);
-  border: 1px solid var(--ink-line);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-radius: var(--radius-sm);
-  padding: 0.7em 0.9em;
-  font-family: var(--font-mono);
+  z-index: 3;
+  display: none; /* revealed by the min-width/min-height query below */
+  width: 250px;
+  border-radius: 18px;
+  padding: 1.1rem 1.2rem 1.25rem;
+  background: linear-gradient(160deg, rgba(23, 41, 92, 0.78), rgba(8, 15, 40, 0.9));
+  box-shadow:
+    0 30px 70px -24px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  overflow: hidden;
   pointer-events: none;
-  opacity: 0.95;
+  animation: hudFloat 7s ease-in-out infinite;
 }
-.hero-writeup-head {
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-  color: var(--gold-bright);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-size: 0.6rem;
-  margin-bottom: 0.4em;
+/* animated gradient border-glow, drawn with a masked pseudo-element
+   so it doesn't add a second box behind the card */
+.hero-hud::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(115deg, transparent 10%, rgba(212,175,55,0.7) 45%, rgba(47,195,188,0.6) 55%, transparent 90%);
+  background-size: 260% 260%;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: hudBorderSheen 6s linear infinite;
+  pointer-events: none;
 }
-.hero-writeup p {
-  font-size: 0.66rem;
-  line-height: 1.5;
-  color: var(--mist);
+/* faint scanline texture for a display/monitor feel */
+.hero-hud::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, rgba(255,255,255,0.035) 0px, rgba(255,255,255,0.035) 1px, transparent 1px, transparent 3px);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+@keyframes hudFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+@keyframes hudBorderSheen {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
 }
 
-/* small pulsing status dot (reuses existing dotPulse keyframes) */
-.hero-writeup-dot {
-  width: 5px; height: 5px; border-radius: 50%;
+.hero-hud-visual {
+  position: relative;
+  width: 100%;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.7rem;
+}
+.hero-hud-svg { width: 100%; height: 100%; overflow: visible; }
+
+.hero-hud-label {
+  display: flex;
+  align-items: center;
+  gap: 0.55em;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  margin-bottom: 0.4rem;
+}
+.hero-hud-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--paper);
+  margin-bottom: 0.35rem;
+}
+.hero-hud-text {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.55;
+  color: var(--mist);
+}
+.hero-hud-dot {
+  width: 6px; height: 6px; border-radius: 50%;
   background: var(--teal-bright);
-  box-shadow: 0 0 6px var(--teal-bright);
+  box-shadow: 0 0 8px var(--teal-bright);
   flex-shrink: 0;
   animation: dotPulse 2.2s ease-in-out infinite;
 }
 
-/* blinking terminal cursor at end of a line */
-.hero-writeup .type-cursor {
-  display: inline-block;
-  width: 5px;
-  margin-left: 1px;
-  color: var(--gold-bright);
-  animation: cursorBlink 1s steps(1) infinite;
+/* the right column sits on light paper — flip the glass so it still reads as a HUD */
+.hero-visual .hero-hud {
+  background: linear-gradient(160deg, rgba(255,255,255,0.86), rgba(240,238,230,0.72));
+  box-shadow:
+    0 30px 70px -26px rgba(11,18,32,0.28),
+    0 0 0 1px rgba(11,18,32,0.03) inset;
 }
-@keyframes cursorBlink { 50% { opacity: 0; } }
+.hero-visual .hero-hud-label { color: var(--gold-deep); }
+.hero-visual .hero-hud-title { color: var(--ink); }
+.hero-visual .hero-hud-text { color: var(--slate); }
+.hero-visual .hero-hud::after { mix-blend-mode: multiply; opacity: 0.5; }
 
-/* tiny radar sweep — the "live scanning" motif */
-.hero-writeup-radar {
-  width: 12px; height: 12px;
-  border-radius: 50%;
-  border: 1px solid var(--teal);
-  position: relative;
-  flex-shrink: 0;
-  overflow: hidden;
+/* corner placements */
+.hero-hud--top-left { top: 2.2rem; left: 2.2rem; }
+.hero-hud--bottom-left { bottom: 6.4rem; left: 2.2rem; }
+.hero-hud--top-right { top: 2.2rem; right: 2.2rem; }
+.hero-hud--bottom-right { bottom: 6.4rem; right: 2.2rem; }
+
+/* -------- Live SOC Feed: scrolling waveform -------- */
+.hw-wave-line {
+  fill: none;
+  stroke: var(--teal-bright);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 260;
+  stroke-dashoffset: 0;
+  filter: drop-shadow(0 0 4px rgba(47,195,188,0.65));
+  animation: hwDraw 3.2s ease-in-out infinite;
 }
-.hero-writeup-radar::after {
-  content: '';
-  position: absolute;
-  top: 50%; left: 50%;
-  width: 50%; height: 1px;
-  background: var(--teal-bright);
-  transform-origin: left center;
-  animation: radarSweep 2.4s linear infinite;
+@keyframes hwDraw {
+  0%   { stroke-dashoffset: 260; }
+  50%  { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -260; }
 }
-@keyframes radarSweep { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-/* corner placements — left column (hero-copy, dark) */
-.hero-writeup--top-left { top: 1.4rem; left: 1.4rem; }
-.hero-writeup--bottom-left { bottom: 5.2rem; left: 1.4rem; }
+/* -------- Threat Radar: rotating sweep + blips -------- */
+.hw-radar-ring {
+  fill: none;
+  stroke: rgba(212,175,55,0.35);
+  stroke-width: 1;
+}
+.hw-radar-sweep {
+  transform-origin: 50px 50px;
+  animation: hwSpin 3.4s linear infinite;
+}
+.hw-radar-sweep-fill { fill: rgba(47,195,188,0.4); }
+.hw-radar-sweep-edge { stroke: var(--teal-bright); stroke-width: 1.4; filter: drop-shadow(0 0 4px rgba(47,195,188,0.8)); }
+.hw-radar-blip {
+  fill: var(--gold-bright);
+  filter: drop-shadow(0 0 4px rgba(241,210,122,0.9));
+  animation: hwBlip 2.4s ease-in-out infinite;
+}
+.hw-radar-blip--b { animation-delay: 1.1s; }
+@keyframes hwBlip { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
+@keyframes hwSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-/* corner placements — right column (hero-visual, light) */
-.hero-writeup--top-right { top: 1.4rem; right: 1.4rem; }
-.hero-writeup--bottom-right { bottom: 5.2rem; right: 1.4rem; }
+/* -------- Digital Forensics: scan beam over fingerprint arcs -------- */
+.hw-scan-arc {
+  fill: none;
+  stroke: var(--teal-bright);
+  stroke-width: 1.4;
+  opacity: 0.55;
+  animation: hwArcPulse 3s ease-in-out infinite;
+}
+.hw-scan-arc:nth-child(2) { animation-delay: 0.2s; }
+.hw-scan-arc:nth-child(3) { animation-delay: 0.4s; }
+.hw-scan-arc:nth-child(4) { animation-delay: 0.6s; }
+.hw-scan-arc:nth-child(5) { animation-delay: 0.8s; }
+@keyframes hwArcPulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.85; } }
+.hw-scan-beam {
+  fill: url(#hwScanGradient);
+  animation: hwBeamMove 2.6s ease-in-out infinite;
+}
+@keyframes hwBeamMove {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(64px); }
+  100% { transform: translateY(0); }
+}
 
-/* the right column is light paper — flip the card colors so it reads correctly */
-.hero-visual .hero-writeup { background: rgba(255,255,255,0.72); border-color: var(--paper-line); }
-.hero-visual .hero-writeup-head { color: var(--gold-deep); }
-.hero-visual .hero-writeup p { color: var(--slate); }
+/* -------- Network Map: orbiting nodes around a core -------- */
+.hw-orbit-core { fill: var(--gold-bright); filter: drop-shadow(0 0 6px rgba(241,210,122,0.9)); }
+.hw-orbit-path { fill: none; stroke: rgba(255,255,255,0.14); stroke-width: 1; stroke-dasharray: 2 4; }
+.hero-visual .hw-orbit-path { stroke: rgba(11,18,32,0.16); }
+.hw-orbit-rotate { transform-origin: 50px 50px; animation: hwSpin 7s linear infinite; }
+.hw-orbit-rotate--reverse { animation-direction: reverse; animation-duration: 10s; }
+.hw-orbit-node { fill: var(--teal-bright); filter: drop-shadow(0 0 5px rgba(47,195,188,0.85)); }
+.hw-orbit-node--gold { fill: var(--gold-bright); filter: drop-shadow(0 0 5px rgba(241,210,122,0.85)); }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-writeup .type-cursor,
-  .hero-writeup-dot,
-  .hero-writeup-radar::after { animation: none; }
+  .hero-hud,
+  .hero-hud::before,
+  .hw-wave-line,
+  .hw-radar-sweep,
+  .hw-radar-blip,
+  .hw-scan-arc,
+  .hw-scan-beam,
+  .hw-orbit-rotate { animation: none; }
 }
 
-@media (max-width: 900px) {
-  .hero-writeup { max-width: 150px; padding: 0.55em 0.7em; }
-  .hero-writeup p { font-size: 0.6rem; }
-}
-@media (max-width: 480px) {
-  .hero-writeup--bottom-left,
-  .hero-writeup--bottom-right { display: none; }
-  .hero-writeup { max-width: 128px; }
+/* reveal the HUD panels only where there's genuinely free space */
+@media (min-width: 1100px) and (min-height: 640px) {
+  .hero-hud { display: block; }
 }
 
 /* ---------- Scroll progress bar ---------- */
@@ -863,6 +981,12 @@ p { margin: 0; }
   grid-template-columns: repeat(4, 1fr);
   gap: 1px;
   background: var(--ink-line);
+}
+@media (max-width: 700px) {
+  .dashboard-stats { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 420px) {
+  .dashboard-stats { grid-template-columns: 1fr; }
 }
 .stat-tile { color: var(--paper); padding: 1.4rem 1.6rem; }
 .stat-tile .num { font-family: var(--font-display); font-size: 2rem; color: var(--teal-bright); transition: transform 0.3s var(--ease-spring); display: inline-block; }
