@@ -1508,3 +1508,107 @@ p { margin: 0; }
 .page-intro { padding-block: clamp(3rem, 7vw, 5rem) 1rem; background: var(--ink); color: var(--paper); }
 .page-intro h1 { font-size: clamp(2.1rem, 4vw, 3.2rem); margin-top: 0.6rem; }
 .page-intro p { color: var(--mist); max-width: 56ch; margin-top: 1rem; }
+
+/* ============================================================
+   HERO CORNER WRITE-UPS — small cybersecurity-themed callouts
+   in the 4 corners of the split hero, each with a tiny "live"
+   element (blinking cursor or radar sweep). Minimal, non-
+   interactive (pointer-events: none) so they never block clicks.
+   ============================================================ */
+.hero-writeup {
+  position: absolute;
+  z-index: 2;
+  max-width: 190px;
+  background: rgba(10, 18, 48, 0.62);
+  border: 1px solid var(--ink-line);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: var(--radius-sm);
+  padding: 0.7em 0.9em;
+  font-family: var(--font-mono);
+  pointer-events: none;
+  opacity: 0.95;
+}
+.hero-writeup-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  color: var(--gold-bright);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.6rem;
+  margin-bottom: 0.4em;
+}
+.hero-writeup p {
+  font-size: 0.66rem;
+  line-height: 1.5;
+  color: var(--mist);
+}
+
+/* small pulsing status dot (reuses existing dotPulse keyframes) */
+.hero-writeup-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--teal-bright);
+  box-shadow: 0 0 6px var(--teal-bright);
+  flex-shrink: 0;
+  animation: dotPulse 2.2s ease-in-out infinite;
+}
+
+/* blinking terminal cursor at end of a line */
+.hero-writeup .type-cursor {
+  display: inline-block;
+  width: 5px;
+  margin-left: 1px;
+  color: var(--gold-bright);
+  animation: cursorBlink 1s steps(1) infinite;
+}
+@keyframes cursorBlink { 50% { opacity: 0; } }
+
+/* tiny radar sweep — the "live scanning" motif */
+.hero-writeup-radar {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  border: 1px solid var(--teal);
+  position: relative;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.hero-writeup-radar::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 50%; height: 1px;
+  background: var(--teal-bright);
+  transform-origin: left center;
+  animation: radarSweep 2.4s linear infinite;
+}
+@keyframes radarSweep { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* corner placements — left column (hero-copy, dark) */
+.hero-writeup--top-left { top: 1.4rem; left: 1.4rem; }
+.hero-writeup--bottom-left { bottom: 5.2rem; left: 1.4rem; }
+
+/* corner placements — right column (hero-visual, light) */
+.hero-writeup--top-right { top: 1.4rem; right: 1.4rem; }
+.hero-writeup--bottom-right { bottom: 5.2rem; right: 1.4rem; }
+
+/* the right column is light paper — flip the card colors so it reads correctly */
+.hero-visual .hero-writeup { background: rgba(255,255,255,0.72); border-color: var(--paper-line); }
+.hero-visual .hero-writeup-head { color: var(--gold-deep); }
+.hero-visual .hero-writeup p { color: var(--slate); }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-writeup .type-cursor,
+  .hero-writeup-dot,
+  .hero-writeup-radar::after { animation: none; }
+}
+
+@media (max-width: 900px) {
+  .hero-writeup { max-width: 150px; padding: 0.55em 0.7em; }
+  .hero-writeup p { font-size: 0.6rem; }
+}
+@media (max-width: 480px) {
+  .hero-writeup--bottom-left,
+  .hero-writeup--bottom-right { display: none; }
+  .hero-writeup { max-width: 128px; }
+}
