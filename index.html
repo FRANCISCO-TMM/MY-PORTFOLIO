@@ -30,13 +30,19 @@
 
   <main>
     <!-- HERO: split-screen -->
-    <section class="hero" style="background-image: url('images/yourimage1.png'); background-size: cover; background-position: center;">
+    <section class="hero" style="background-image: url('images/Projects.jpg'); background-size: cover; background-position: center;">
       <div class="hero-copy">
 
-        <!-- CORNER WRITE-UP: top-left -->
-        <div class="hero-writeup hero-writeup--top-left">
-          <div class="hero-writeup-head"><span class="hero-writeup-dot"></span>SOC Analyst Log</div>
-          <p>Anomalous login pattern flagged — alert triaged and escalated for review.<span class="type-cursor">_</span></p>
+        <!-- HUD PANEL: top-left — Live SOC Feed (animated waveform) -->
+        <div class="hero-hud hero-hud--top-left">
+          <div class="hero-hud-visual">
+            <svg class="hero-hud-svg" viewBox="0 0 160 40" preserveAspectRatio="none" aria-hidden="true">
+              <polyline points="0,20 16,20 24,6 32,34 40,20 58,20 66,8 74,32 82,20 100,20 108,12 116,28 124,20 160,20" class="hw-wave-line"/>
+            </svg>
+          </div>
+          <div class="hero-hud-label"><span class="hero-hud-dot"></span>Live SOC Feed</div>
+          <h4 class="hero-hud-title">Monitoring Active</h4>
+          <p class="hero-hud-text">Real-time log correlation across endpoints — zero unresolved alerts.</p>
         </div>
 
         <span class="eyebrow" data-hero-item="1">100 Level · B.Sc. Cybersecurity · MIVA Open University</span>
@@ -52,33 +58,79 @@
           <span>ABUJA, NIGERIA</span>
         </div>
 
-        <!-- CORNER WRITE-UP: bottom-left -->
-        <div class="hero-writeup hero-writeup--bottom-left">
-          <div class="hero-writeup-head"><span class="hero-writeup-radar"></span>Threat Intel</div>
-          <p>Tracking a newly identified phishing campaign targeting .edu domains.</p>
+        <!-- HUD PANEL: bottom-left — Threat Radar (rotating sweep + blips) -->
+        <div class="hero-hud hero-hud--bottom-left">
+          <div class="hero-hud-visual">
+            <svg class="hero-hud-svg" viewBox="0 0 100 100" aria-hidden="true">
+              <circle cx="50" cy="50" r="46" class="hw-radar-ring"/>
+              <circle cx="50" cy="50" r="30" class="hw-radar-ring"/>
+              <circle cx="50" cy="50" r="14" class="hw-radar-ring"/>
+              <g class="hw-radar-sweep">
+                <path d="M50,50 L50,4 A46,46 0 0,1 88,28 Z" class="hw-radar-sweep-fill"/>
+                <line x1="50" y1="50" x2="50" y2="4" class="hw-radar-sweep-edge"/>
+              </g>
+              <circle cx="68" cy="30" r="2.6" class="hw-radar-blip"/>
+              <circle cx="32" cy="66" r="2.2" class="hw-radar-blip hw-radar-blip--b"/>
+            </svg>
+          </div>
+          <div class="hero-hud-label"><span class="hero-hud-dot"></span>Threat Radar</div>
+          <h4 class="hero-hud-title">Tracking Activity</h4>
+          <p class="hero-hud-text">New phishing campaign identified, targeting .edu domains.</p>
         </div>
 
       </div>
       <div class="hero-visual">
 
-        <!-- CORNER WRITE-UP: top-right -->
-        <div class="hero-writeup hero-writeup--top-right">
-          <div class="hero-writeup-head"><span class="hero-writeup-radar"></span>Digital Forensics</div>
-          <p>Disk image acquired — verifying SHA-256 hash integrity.<span class="type-cursor">_</span></p>
+        <!-- HUD PANEL: top-right — Digital Forensics (scan beam over evidence arcs) -->
+        <div class="hero-hud hero-hud--top-right">
+          <div class="hero-hud-visual">
+            <svg class="hero-hud-svg" viewBox="0 0 100 70" aria-hidden="true">
+              <defs>
+                <linearGradient id="hwScanGradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#D4AF37" stop-opacity="0"/>
+                  <stop offset="50%" stop-color="#F1D27A" stop-opacity="0.85"/>
+                  <stop offset="100%" stop-color="#D4AF37" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path d="M18,10 Q50,-2 82,10" class="hw-scan-arc"/>
+              <path d="M13,22 Q50,8 87,22" class="hw-scan-arc"/>
+              <path d="M10,34 Q50,18 90,34" class="hw-scan-arc"/>
+              <path d="M13,46 Q50,30 87,46" class="hw-scan-arc"/>
+              <path d="M18,58 Q50,44 82,58" class="hw-scan-arc"/>
+              <rect x="0" y="0" width="100" height="6" class="hw-scan-beam"/>
+            </svg>
+          </div>
+          <div class="hero-hud-label"><span class="hero-hud-dot"></span>Digital Forensics</div>
+          <h4 class="hero-hud-title">Evidence Verified</h4>
+          <p class="hero-hud-text">Disk image acquired — SHA-256 hash integrity confirmed.</p>
         </div>
 
         <div class="avatar-frame" data-hero-item="visual" data-tilt>
-          <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=800&auto=format&fit=crop" alt="Placeholder professional portrait of Godwin Chukwunonso — replace with your own photo">
+          <img src="images/Projects.jpg" alt="Godwin Chukwunonso — Cybersecurity student portrait">
           <div class="avatar-tag">
-            <span>godwin_chukwunonso.jpg</span>
-            <span>REPLACE ME</span>
+            <span>Projects.jpg</span>
+            <span>PORTRAIT · ON FILE</span>
           </div>
         </div>
 
-        <!-- CORNER WRITE-UP: bottom-right -->
-        <div class="hero-writeup hero-writeup--bottom-right">
-          <div class="hero-writeup-head"><span class="hero-writeup-dot"></span>Incident Response</div>
-          <p>Contained. Root cause traced to a misconfigured firewall rule.</p>
+        <!-- HUD PANEL: bottom-right — Network Map (orbiting nodes) -->
+        <div class="hero-hud hero-hud--bottom-right">
+          <div class="hero-hud-visual">
+            <svg class="hero-hud-svg" viewBox="0 0 100 100" aria-hidden="true">
+              <circle cx="50" cy="50" r="34" class="hw-orbit-path"/>
+              <circle cx="50" cy="50" r="20" class="hw-orbit-path"/>
+              <circle cx="50" cy="50" r="4.2" class="hw-orbit-core"/>
+              <g class="hw-orbit-rotate">
+                <circle cx="50" cy="16" r="2.8" class="hw-orbit-node"/>
+              </g>
+              <g class="hw-orbit-rotate hw-orbit-rotate--reverse">
+                <circle cx="50" cy="30" r="2.2" class="hw-orbit-node hw-orbit-node--gold"/>
+              </g>
+            </svg>
+          </div>
+          <div class="hero-hud-label"><span class="hero-hud-dot"></span>Network Map</div>
+          <h4 class="hero-hud-title">Perimeter Secured</h4>
+          <p class="hero-hud-text">Contained — root cause traced to a misconfigured firewall rule.</p>
         </div>
 
       </div>
