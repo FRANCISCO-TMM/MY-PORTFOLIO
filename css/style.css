@@ -82,7 +82,7 @@ body {
     margin: 0;
     font-family: var(--font-body);
     color: var(--ink);
-    background: linear-gradient(165deg, #0A1230 0%, #132352 55%, #0D1A3E 100%);
+    background: linear-gradient(165deg, var(--ink) 0%, var(--ink-soft) 55%, var(--ink) 100%);
 }
 
 }
