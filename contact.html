@@ -30,60 +30,101 @@
   <main>
     <section class="page-intro">
       <div class="wrap">
-        <span class="eyebrow">Get in touch</span>
-        <h1>Let's talk about internships or projects.</h1>
-        <p>Send a message below — I try to reply within a couple of days.</p>
+        <span class="eyebrow">Let's Connect</span>
+        <h1>Get In Touch</h1>
+        <p>Whether you have a project idea, a question, or just want to say hello — my inbox is always open.</p>
       </div>
     </section>
 
     <section class="section">
       <div class="wrap">
         <div class="contact-layout">
-          <div class="contact-info">
-            <h2>Godwin Chukwunonso</h2>
-            <p>100-level Cybersecurity student at MIVA Open University. Open to internships and collaborative projects.</p>
+          <div class="contact-info ink-surface" style="align-items: flex-start;">
+            <div>
+              <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Contact Details</h2>
+              <p>Feel free to reach out through any of the channels below, or use the form to send me a message directly.</p>
+            </div>
             <div class="contact-detail">
               <span>Email</span>
-              <span>godwin.chukwunonso@student.miva.edu.ng</span>
+              <span>c.godwin3667@miva.edu.ng</span>
+            </div>
+            <div class="contact-detail">
+              <span>Phone</span>
+              <span>+234 815 606 812</span>
             </div>
             <div class="contact-detail">
               <span>Location</span>
-              <span>Abuja, Nigeria</span>
+              <span>Jalingo, Taraba State, Nigeria</span>
             </div>
             <div class="contact-detail">
-              <span>Elsewhere</span>
-              <span>github.com/godwinchukwunonso · linkedin.com/in/godwinchukwunonso</span>
+              <span>GitHub</span>
+              <span><a href="https://github.com/FRANCISCO-TMM" target="_blank" rel="noopener" style="color: var(--teal-bright); border-bottom: 1px solid transparent;">github.com/FRANCISCO-TMM</a></span>
             </div>
-            <div class="status-bar">
-              <span><span class="dot"></span>USUALLY REPLIES WITHIN 48H</span>
+            <div class="contact-detail">
+              <span>LinkedIn</span>
+              <span><a href="https://www.linkedin.com/in/chukwunonso-godwin-7482163b1" target="_blank" rel="noopener" style="color: var(--teal-bright); border-bottom: 1px solid transparent;">linkedin.com/in/chukwunonso-godwin-7482163b1</a></span>
+            </div>
+            <div class="opportunity-banner">
+              <span class="check">✓</span>
+              <div>
+                <strong>Open to Opportunities</strong>
+                <p>Currently seeking internships and freelance cybersecurity projects.</p>
+              </div>
             </div>
           </div>
 
           <div class="contact-form-wrap">
             <form id="contact-form" novalidate>
+              <h2 style="font-size: 1.3rem; margin-bottom: 0.3rem;">Send a Message</h2>
+              <p style="color: var(--slate); font-size: 0.9rem; margin-bottom: 1.4rem;">All fields are required. I typically respond within 24 hours.</p>
               <div class="form-field">
                 <label for="name">Full name</label>
-                <input type="text" id="name" name="name" placeholder="Jordan Lee" required>
+                <input type="text" id="name" name="name" placeholder="Jane Smith" required>
                 <span class="field-error"></span>
               </div>
               <div class="form-field">
                 <label for="email">Email address</label>
-                <input type="email" id="email" name="email" placeholder="jordan@example.com" required>
+                <input type="email" id="email" name="email" placeholder="jane@example.com" required>
                 <span class="field-error"></span>
               </div>
               <div class="form-field">
                 <label for="phone">Phone number</label>
-                <input type="tel" id="phone" name="phone" placeholder="5551234567" required>
+                <input type="tel" id="phone" name="phone" placeholder="08012345678" required>
                 <span class="field-error"></span>
               </div>
               <div class="form-field">
                 <label for="message">Message</label>
-                <textarea id="message" name="message" placeholder="Tell me a bit about the opportunity or question..." required></textarea>
+                <textarea id="message" name="message" placeholder="Hi Godwin, I'd like to discuss a cybersecurity project..." required></textarea>
                 <span class="field-error"></span>
               </div>
-              <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Send message</button>
+              <p style="color: var(--slate); font-size: 0.82rem; margin-bottom: 1rem;">🔒 Your information is only used to respond to your enquiry and never shared with third parties.</p>
+              <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Send Message →</button>
               <div class="form-status" role="status" aria-live="polite"></div>
             </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section--dim" data-reveal-group>
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">Common Questions</span>
+          <h2>FAQ</h2>
+        </div>
+        <div class="grid-3" data-reveal>
+          <div class="faq-card">
+            <h4>What areas of security are you currently focused on?</h4>
+            <p>I specialize in Digital Forensics, Threat Intelligence, and SOC monitoring. I focus on identifying vulnerabilities, analyzing digital evidence, and defending critical infrastructure.</p>
+          </div>
+          <div class="faq-card">
+            <h4>What kind of tools or platforms do you build?</h4>
+            <p>I love developing security scripts in Python, building threat tracking tools, and setting up home labs to simulate network attacks and defensive monitoring.</p>
+          </div>
+          <div class="faq-card">
+            <h4>Are you open to internships or collaborations?</h4>
+            <p>Absolutely. I am actively seeking cybersecurity internships and collaborations where I can contribute to real-world threat hunting, incident response, and security operations.</p>
           </div>
         </div>
       </div>
@@ -95,16 +136,12 @@
       <span>© <span data-year></span> Godwin Chukwunonso &amp; MIVA Open University. All rights reserved.</span>
       <div class="footer-links">
         <a href="contact.html">Contact</a>
-        <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/FRANCISCO-TMM" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/chukwunonso-godwin-7482163b1" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
-  <script src="js/contact.js"></script>
-</body>
-</html>
   <script src="js/main.js"></script>
   <script src="js/contact.js"></script>
 </body>
