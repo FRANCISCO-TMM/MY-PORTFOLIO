@@ -62,6 +62,35 @@
     });
   }
 
+  /* ---------- Skill bar fill animation ---------- */
+  function initSkillBars() {
+    var bars = document.querySelectorAll('.skill-bar-row');
+    if (!bars.length) return;
+
+    bars.forEach(function (bar) {
+      var fill = bar.getAttribute('data-fill') || '0%';
+      bar.style.setProperty('--fill', fill);
+    });
+
+    if (!('IntersectionObserver' in window)) {
+      bars.forEach(function (bar) { bar.classList.add('is-visible'); });
+      return;
+    }
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    bars.forEach(function (bar) { observer.observe(bar); });
+  }
+
   /* ---------- Nav background intensifies on scroll ---------- */
   function initNavScrollState() {
     var nav = document.querySelector('.site-nav');
@@ -97,9 +126,9 @@
   document.addEventListener('DOMContentLoaded', function () {
     initNavToggle();
     initScrollReveal();
+    initSkillBars();
     initNavScrollState();
     initFooterYear();
     markActiveNav();
   });
 })();
-
