@@ -52,6 +52,7 @@
   background:
     radial-gradient(ellipse 900px 520px at 88% -12%, rgba(212, 175, 55, 0.20), transparent 60%),
     radial-gradient(ellipse 640px 460px at -8% 112%, rgba(212, 175, 55, 0.10), transparent 58%),
+    radial-gradient(ellipse 520px 420px at 50% 105%, rgba(200, 70, 60, 0.09), transparent 62%),
     linear-gradient(165deg, #0A1230 0%, #132352 55%, #0D1A3E 100%);
   position: relative;
 }
@@ -816,7 +817,198 @@ p { margin: 0; }
 .hobby-tile .hobby-emoji { font-size: 1.7rem; }
 .hobby-tile span:last-child { font-family: var(--font-mono); font-size: 0.8rem; color: var(--paper); }
 
-/* ---------- Bio prose block ---------- */
+/* ---------- Bio portrait with floating quote card ---------- */
+.bio-portrait {
+  position: relative;
+}
+.bio-portrait img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+  aspect-ratio: 4/5;
+  box-shadow: 0 30px 60px -24px rgba(0,0,0,0.5);
+}
+.bio-quote {
+  position: absolute;
+  right: -1.2rem;
+  bottom: -1.6rem;
+  max-width: 280px;
+  background: rgba(10, 18, 48, 0.88);
+  border: 1px solid var(--ink-line);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-md);
+  padding: 1.2rem 1.4rem;
+  box-shadow: 0 26px 50px -20px rgba(0,0,0,0.55);
+  animation: floatCard 4.5s ease-in-out infinite;
+}
+.bio-quote p {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.98rem;
+  color: var(--paper);
+  line-height: 1.5;
+}
+.bio-quote cite {
+  display: block;
+  margin-top: 0.7rem;
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+}
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@media (prefers-reduced-motion: reduce) { .bio-quote { animation: none; } }
+@media (max-width: 760px) {
+  .bio-quote { position: static; margin-top: -2.5rem; margin-inline: 1rem; }
+}
+
+/* ---------- Cybersecurity emoji badge (career aspirations) ---------- */
+.aspiration-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  font-size: 1.5rem;
+  background: linear-gradient(150deg, rgba(212,175,55,0.16), rgba(34,166,160,0.10));
+  border: 1px solid var(--paper-line);
+  margin-bottom: 0.4rem;
+}
+
+/* ---------- Core skill tiles (index.html) ---------- */
+.skill-tile-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+@media (max-width: 760px) { .skill-tile-grid { grid-template-columns: repeat(2, 1fr); } }
+.skill-tile {
+  background: var(--ink-soft);
+  border: 1px solid var(--ink-line);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.4s var(--ease-smooth), border-color 0.4s var(--ease-smooth), box-shadow 0.4s var(--ease-smooth);
+}
+.skill-tile:hover { transform: translateY(-4px); border-color: var(--gold); box-shadow: 0 16px 30px -18px rgba(212,175,55,0.35); }
+.skill-tile .skill-tile-icon { font-size: 1.6rem; }
+.skill-tile h4 { color: var(--paper); font-size: 0.92rem; }
+.skill-tile .skill-level {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+}
+
+/* ---------- Audio introduction ---------- */
+.audio-block {
+  background: var(--ink-soft);
+  border: 1px solid var(--ink-line);
+  border-radius: var(--radius-md);
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+.audio-block-label {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--mist);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+.audio-block-label em { color: var(--gold-bright); font-style: italic; }
+.audio-block audio {
+  width: 100%;
+  accent-color: var(--gold);
+  border-radius: 999px;
+}
+
+/* ---------- FAQ cards (contact page) ---------- */
+.faq-card {
+  background: var(--ink-soft);
+  border: 1px solid var(--ink-line);
+  border-radius: var(--radius-md);
+  padding: 1.6rem;
+}
+.faq-card h4 { color: var(--paper); font-size: 1.02rem; margin-bottom: 0.6rem; }
+.faq-card p { color: var(--mist); font-size: 0.92rem; }
+
+/* ---------- Opportunity banner ---------- */
+.opportunity-banner {
+  background: rgba(34, 166, 160, 0.10);
+  border: 1px solid rgba(34, 166, 160, 0.35);
+  border-radius: var(--radius-md);
+  padding: 1.2rem 1.4rem;
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+}
+.opportunity-banner .check {
+  width: 24px; height: 24px;
+  border-radius: 6px;
+  background: var(--teal);
+  color: var(--ink);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+.opportunity-banner strong { display: block; color: var(--teal-bright); font-size: 0.95rem; margin-bottom: 0.2rem; }
+.opportunity-banner p { color: var(--mist); font-size: 0.88rem; }
+
+/* ---------- CTA band (projects page) ---------- */
+.cta-band {
+  background: var(--ink-soft);
+  border: 1px solid var(--ink-line);
+  border-radius: var(--radius-lg);
+  padding: clamp(2rem, 5vw, 3rem);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.cta-band h3 { color: var(--paper); font-size: 1.5rem; }
+.cta-band p { color: var(--mist); max-width: 46ch; }
+
+/* ---------- Build process steps (projects page) ---------- */
+.build-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.4rem;
+}
+@media (max-width: 900px) { .build-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .build-grid { grid-template-columns: 1fr; } }
+.build-step {
+  background: var(--white);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-md);
+  padding: 1.6rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  transition: transform 0.4s var(--ease-smooth);
+}
+.build-step:hover { transform: translateY(-4px); }
+.build-step .build-icon { font-size: 1.6rem; }
+.build-step h4 { font-size: 1rem; }
+.build-step p { color: var(--slate); font-size: 0.88rem; }
+
+
 .bio-prose { display: flex; flex-direction: column; gap: 1.1rem; max-width: 68ch; }
 .bio-prose p { color: var(--slate); font-size: 1.02rem; }
 .section--ink .bio-prose p { color: var(--mist); }
