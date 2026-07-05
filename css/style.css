@@ -277,8 +277,9 @@ p { margin: 0; }
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
   min-height: calc(100svh - 66px);
-  background: var(--ink);
+  background-color: var(--ink);
   color: var(--paper);
+  position: relative;
 }
 .hero-copy {
   display: flex;
@@ -292,6 +293,55 @@ p { margin: 0; }
   font-size: clamp(2.4rem, 5vw, 4.1rem);
   letter-spacing: -0.01em;
 }
+/* ---------- Hero bottom ticker (fills dead space, SOC-monitor motif) ---------- */
+.hero-ticker {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  overflow: hidden;
+  border-top: 1px solid var(--ink-line);
+  background: rgba(8, 16, 42, 0.55);
+  backdrop-filter: blur(6px);
+  padding-block: 0.8rem;
+  white-space: nowrap;
+}
+.hero-ticker-track {
+  display: inline-flex;
+  gap: 3rem;
+  animation: tickerScroll 26s linear infinite;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mist);
+}
+.hero-ticker-track span { display: inline-flex; align-items: center; gap: 0.6em; white-space: nowrap; }
+.hero-ticker-track .glow { color: var(--gold-bright); }
+@keyframes tickerScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) { .hero-ticker-track { animation: none; } }
+
+.scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 3.2rem;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: var(--mist);
+  z-index: 1;
+}
+.scroll-cue .line { width: 1px; height: 28px; background: linear-gradient(var(--gold-bright), transparent); animation: scrollCueMove 1.8s ease-in-out infinite; }
+@keyframes scrollCueMove { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .scroll-cue .line { animation: none; } }
+@media (max-width: 860px) { .scroll-cue { display: none; } }
+
 .hero-copy h1 em {
   font-style: italic;
   background: linear-gradient(100deg, var(--gold-deep), var(--gold-bright), var(--gold));
@@ -311,7 +361,7 @@ p { margin: 0; }
 
 .hero-visual {
   position: relative;
-  background: linear-gradient(155deg, var(--paper) 0%, var(--paper-dim) 100%);
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -339,21 +389,6 @@ p { margin: 0; }
   letter-spacing: 0.05em;
   display: flex;
   justify-content: space-between;
-}
-.hero-visual::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(var(--paper-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--paper-line) 1px, transparent 1px);
-  background-size: 42px 42px;
-  opacity: 0.6;
-  animation: gridDrift 22s linear infinite;
-}
-@keyframes gridDrift {
-  from { background-position: 0 0; }
-  to { background-position: 42px 42px; }
 }
 
 .avatar-frame {
@@ -817,7 +852,153 @@ p { margin: 0; }
 .hobby-tile .hobby-emoji { font-size: 1.7rem; }
 .hobby-tile span:last-child { font-family: var(--font-mono); font-size: 0.8rem; color: var(--paper); }
 
-/* ---------- Bio surface: distinct background + watermark portrait ---------- */
+/* ---------- Decorative section divider ---------- */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  max-width: 220px;
+  margin: 0 auto;
+  padding-block: clamp(2rem, 5vw, 3rem);
+}
+.divider .line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+.divider .glyph { color: var(--gold-bright); font-size: 1rem; }
+
+/* ---------- Core Expertise pillar cards ---------- */
+.pillar-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+}
+@media (max-width: 900px) { .pillar-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .pillar-grid { grid-template-columns: 1fr; } }
+.pillar-card {
+  background: var(--white);
+  border: 1px solid var(--paper-line);
+  border-top: 3px solid var(--gold);
+  border-radius: var(--radius-md);
+  padding: 1.8rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  transition: transform 0.4s var(--ease-smooth), box-shadow 0.4s var(--ease-smooth);
+}
+.pillar-card:hover { transform: translateY(-5px); box-shadow: 0 22px 40px -26px rgba(11,18,32,0.25); }
+.pillar-card .pillar-icon { font-size: 1.8rem; }
+.pillar-card h3 { font-size: 1.08rem; }
+.pillar-card p { color: var(--slate); font-size: 0.9rem; }
+
+/* ---------- Security principle chips ---------- */
+.principle-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+.principle-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  background: var(--ink-soft);
+  border: 1px solid var(--ink-line);
+  border-radius: 999px;
+  padding: 0.8em 1.3em;
+  font-size: 0.88rem;
+  color: var(--paper);
+  transition: border-color 0.35s var(--ease-smooth), transform 0.35s var(--ease-smooth);
+}
+.principle-chip:hover { border-color: var(--gold); transform: translateY(-2px); }
+.principle-chip .principle-icon { color: var(--gold-bright); }
+
+/* ---------- Certification placeholder badges ---------- */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+@media (max-width: 760px) { .cert-grid { grid-template-columns: 1fr; } }
+.cert-badge {
+  position: relative;
+  background: var(--ink-soft);
+  border: 1px dashed var(--ink-line);
+  border-radius: var(--radius-md);
+  padding: 1.6rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+.cert-badge .cert-icon {
+  width: 54px; height: 54px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  background: rgba(212,175,55,0.12);
+  border: 1px solid rgba(212,175,55,0.3);
+}
+.cert-badge h4 { color: var(--paper); font-size: 0.98rem; }
+.cert-badge .cert-status {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  border: 1px solid rgba(212,175,55,0.35);
+  border-radius: 999px;
+  padding: 0.25em 0.8em;
+}
+
+/* ---------- Stat strip (By the Numbers) ---------- */
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--ink-line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+@media (max-width: 700px) { .stat-strip { grid-template-columns: repeat(2, 1fr); } }
+.stat-strip-cell {
+  background: var(--ink-soft);
+  padding: 1.8rem 1.2rem;
+  text-align: center;
+}
+.stat-strip-cell .num { font-family: var(--font-display); font-size: 2.1rem; color: var(--gold-bright); }
+.stat-strip-cell .label { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--mist); margin-top: 0.4rem; }
+
+/* ---------- Cybersecurity quote banner ---------- */
+.quote-banner {
+  position: relative;
+  text-align: center;
+  padding: clamp(2.5rem, 6vw, 4rem) 1.5rem;
+  max-width: 780px;
+  margin-inline: auto;
+}
+.quote-banner .quote-mark { font-family: var(--font-display); font-size: 3rem; color: var(--gold); line-height: 1; opacity: 0.7; }
+.quote-banner p { font-family: var(--font-display); font-style: italic; font-size: clamp(1.2rem, 2.6vw, 1.6rem); color: var(--paper); line-height: 1.5; margin-top: 0.5rem; }
+.quote-banner cite { display: block; margin-top: 1.2rem; font-family: var(--font-mono); font-style: normal; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-bright); }
+
+/* ---------- Network/world-map decorative background ---------- */
+.section--network {
+  position: relative;
+  background:
+    radial-gradient(ellipse 700px 500px at 85% 20%, rgba(34,166,160,0.12), transparent 55%),
+    linear-gradient(180deg, #0A1230 0%, #0E1A3C 100%);
+  overflow: hidden;
+}
+.section--network::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('../images/network-nodes.svg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5;
+  pointer-events: none;
+}
+.section--network .wrap { position: relative; z-index: 1; }
+
 .bio-surface {
   position: relative;
   color: var(--paper);
@@ -835,7 +1016,7 @@ p { margin: 0; }
   right: -8%;
   width: 620px;
   height: 620px;
-  background-image: url('images/yourimage1.png');
+  background-image: url('https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=800&auto=format&fit=crop');
   background-size: cover;
   background-position: center;
   filter: grayscale(1) contrast(1.1);
