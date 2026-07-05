@@ -313,9 +313,12 @@ p { margin: 0; }
   position: relative;
   background: linear-gradient(155deg, var(--paper) 0%, var(--paper-dim) 100%);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  padding: 2rem 1.5rem;
+  gap: 0;
 }
 .avatar-frame {
   position: relative;
@@ -365,6 +368,70 @@ p { margin: 0; }
   box-shadow: 0 40px 70px -20px rgba(11,18,32,0.42);
 }
 
+/* ---------- Hero focus panel (fills empty visual space beside/below photo) ---------- */
+.hero-focus-panel {
+  position: relative;
+  z-index: 1;
+  width: min(72%, 360px);
+  margin-top: 1.2rem;
+  background: linear-gradient(160deg, rgba(19,35,82,0.94), rgba(10,18,48,0.94));
+  border: 1px solid var(--ink-line);
+  border-radius: var(--radius-md);
+  padding: 1.1rem 1.2rem;
+  box-shadow: 0 20px 40px -24px rgba(11,18,32,0.35);
+}
+.hero-focus-label {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  margin-bottom: 0.85rem;
+}
+.hero-focus-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--ink-line);
+}
+.hero-focus-list { display: flex; flex-direction: column; gap: 0.55rem; }
+.hero-focus-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.55em 0.8em;
+  border-radius: var(--radius-sm);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--ink-line);
+  transition: border-color 0.3s var(--ease-smooth), transform 0.3s var(--ease-smooth), background 0.3s var(--ease-smooth);
+}
+.hero-focus-chip:hover {
+  border-color: var(--teal);
+  transform: translateX(3px);
+  background: rgba(34,166,160,0.08);
+}
+.hero-focus-chip span {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--paper);
+  font-weight: 600;
+}
+.hero-focus-chip em {
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-size: 0.6rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--teal-bright);
+  border: 1px solid rgba(34,166,160,0.35);
+  border-radius: 999px;
+  padding: 0.22em 0.6em;
+  white-space: nowrap;
+}
+
 /* Hero choreographed entrance */
 [data-hero-item] {
   opacity: 0;
@@ -391,7 +458,8 @@ p { margin: 0; }
 
 @media (max-width: 860px) {
   .hero { grid-template-columns: 1fr; min-height: auto; }
-  .hero-visual { order: -1; padding: 2.5rem 1.5rem; min-height: 380px; }
+  .hero-visual { order: -1; padding: 2.5rem 1.5rem; min-height: auto; }
+  .hero-focus-panel { width: 100%; max-width: 360px; }
 }
 
 /* ---------- Scroll progress bar ---------- */
