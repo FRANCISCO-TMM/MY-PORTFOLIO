@@ -30,21 +30,8 @@
 
   <main>
     <!-- HERO: split-screen -->
-    <section class="hero" style="background-image: url('images/Project.jpg'); background-size: cover; background-position: center;">
+    <section class="hero" style="background-image: url('images/Projects.jpg'); background-size: cover; background-position: center;">
       <div class="hero-copy">
-
-        <!-- HUD PANEL: top-left — Live SOC Feed (animated waveform) -->
-        <div class="hero-hud hero-hud--top-left">
-          <div class="hero-hud-visual">
-            <svg class="hero-hud-svg" viewBox="0 0 160 40" preserveAspectRatio="none" aria-hidden="true">
-              <polyline points="0,20 16,20 24,6 32,34 40,20 58,20 66,8 74,32 82,20 100,20 108,12 116,28 124,20 160,20" class="hw-wave-line"/>
-            </svg>
-          </div>
-          <div class="hero-hud-label"><span class="hero-hud-dot"></span>Live SOC Feed</div>
-          <h4 class="hero-hud-title">Monitoring Active</h4>
-          <p class="hero-hud-text">Real-time log correlation across endpoints — zero unresolved alerts.</p>
-        </div>
-
         <span class="eyebrow" data-hero-item="1">100 Level · B.Sc. Cybersecurity · MIVA Open University</span>
         <h1 data-hero-item="2">Building secure systems,<br><em>one careful line</em> at a time.</h1>
         <p class="hero-lede" data-hero-item="3">I'm Godwin Chukwunonso — a 100-level Cybersecurity student passionate about digital forensics, threat intelligence, and uncovering vulnerabilities to build a more secure digital space.</p>
@@ -57,8 +44,33 @@
           <span>100 LEVEL</span>
           <span>ABUJA, NIGERIA</span>
         </div>
+      </div>
+      <div class="hero-visual">
+        <div class="avatar-frame" data-hero-item="visual" data-tilt>
+          <img src="images/Projects.jpg" alt="Godwin Chukwunonso — Cybersecurity student portrait">
+          <div class="avatar-tag">
+            <span>Projects.jpg</span>
+            <span>PORTRAIT · ON FILE</span>
+          </div>
+        </div>
+      </div>
 
-        <!-- HUD PANEL: bottom-left — Threat Radar (rotating sweep + blips) -->
+      <!-- HUD PANEL GROUP: on mobile these stack as a normal 2-col grid below the
+           photo/text; on roomy desktop screens (see CSS media query) they switch
+           to floating corner overlays instead. Same 4 panels either way. -->
+      <div class="hero-hud-group">
+
+        <div class="hero-hud hero-hud--top-left">
+          <div class="hero-hud-visual">
+            <svg class="hero-hud-svg" viewBox="0 0 160 40" preserveAspectRatio="none" aria-hidden="true">
+              <polyline points="0,20 16,20 24,6 32,34 40,20 58,20 66,8 74,32 82,20 100,20 108,12 116,28 124,20 160,20" class="hw-wave-line"/>
+            </svg>
+          </div>
+          <div class="hero-hud-label"><span class="hero-hud-dot"></span>Live SOC Feed</div>
+          <h4 class="hero-hud-title">Monitoring Active</h4>
+          <p class="hero-hud-text">Real-time log correlation across endpoints — zero unresolved alerts.</p>
+        </div>
+
         <div class="hero-hud hero-hud--bottom-left">
           <div class="hero-hud-visual">
             <svg class="hero-hud-svg" viewBox="0 0 100 100" aria-hidden="true">
@@ -78,11 +90,7 @@
           <p class="hero-hud-text">New phishing campaign identified, targeting .edu domains.</p>
         </div>
 
-      </div>
-      <div class="hero-visual">
-
-        <!-- HUD PANEL: top-right — Digital Forensics (scan beam over evidence arcs) -->
-        <div class="hero-hud hero-hud--top-right">
+        <div class="hero-hud hero-hud--top-right hero-hud--light">
           <div class="hero-hud-visual">
             <svg class="hero-hud-svg" viewBox="0 0 100 70" aria-hidden="true">
               <defs>
@@ -105,16 +113,7 @@
           <p class="hero-hud-text">Disk image acquired — SHA-256 hash integrity confirmed.</p>
         </div>
 
-        <div class="avatar-frame" data-hero-item="visual" data-tilt>
-          <img src="images/Project.jpg" alt="Godwin Chukwunonso — Cybersecurity student portrait">
-          <div class="avatar-tag">
-            <span>Projects.jpg</span>
-            <span>PORTRAIT · ON FILE</span>
-          </div>
-        </div>
-
-        <!-- HUD PANEL: bottom-right — Network Map (orbiting nodes) -->
-        <div class="hero-hud hero-hud--bottom-right">
+        <div class="hero-hud hero-hud--bottom-right hero-hud--light">
           <div class="hero-hud-visual">
             <svg class="hero-hud-svg" viewBox="0 0 100 100" aria-hidden="true">
               <circle cx="50" cy="50" r="34" class="hw-orbit-path"/>
@@ -134,306 +133,7 @@
         </div>
 
       </div>
-      <div class="scroll-cue"><span>SCROLL</span><span class="line"></span></div>
-      <div class="hero-ticker">
-        <div class="hero-ticker-track">
-          <span>🛰️ <span class="glow">SOC STATUS:</span> MONITORING</span>
-          <span>🔒 <span class="glow">ENCRYPTION:</span> AES-256</span>
-          <span>🧬 <span class="glow">FOCUS:</span> DIGITAL FORENSICS</span>
-          <span>🕵️ <span class="glow">FOCUS:</span> THREAT INTELLIGENCE</span>
-          <span>📡 <span class="glow">NETWORK:</span> SECURED</span>
-          <span>🎓 <span class="glow">MIVA OPEN UNIVERSITY</span> · 100 LEVEL</span>
-          <!-- duplicate for seamless loop -->
-          <span>🛰️ <span class="glow">SOC STATUS:</span> MONITORING</span>
-          <span>🔒 <span class="glow">ENCRYPTION:</span> AES-256</span>
-          <span>🧬 <span class="glow">FOCUS:</span> DIGITAL FORENSICS</span>
-          <span>🕵️ <span class="glow">FOCUS:</span> THREAT INTELLIGENCE</span>
-          <span>📡 <span class="glow">NETWORK:</span> SECURED</span>
-          <span>🎓 <span class="glow">MIVA OPEN UNIVERSITY</span> · 100 LEVEL</span>
-        </div>
-      </div>
-    </section>
 
-    <!-- WELCOME / BIO -->
-    <section class="section" data-reveal-group>
-      <div class="wrap">
-        <div class="section-head" data-reveal>
-          <span class="eyebrow">Welcome</span>
-          <h2>A little about how I got here</h2>
-          <p>Short version: curiosity about how things break turned into a career plan for making sure they don't.</p>
-        </div>
-
-        <div class="grid-2">
-          <div class="bio-card" data-reveal>
-            <h3 style="font-size:1.3rem; margin-bottom: 0.8rem;">The short bio</h3>
-            <p style="color: var(--slate);">I'm a 100-level Cybersecurity student at MIVA Open University, passionate about digital forensics, threat intelligence, and uncovering vulnerabilities to build a more secure digital space. This site is my personal portfolio, built with HTML, CSS, and JavaScript as part of my COS 106 Lab Assessment project.</p>
-          </div>
-          <div class="bio-card" data-reveal>
-            <h3 style="font-size:1.3rem; margin-bottom: 0.8rem;">What I'm focused on right now</h3>
-            <p style="color: var(--slate);">I'm building a foundation in digital forensics, SOC analysis, and threat intelligence, while volunteering as a coding mentor at a local secondary school. Teaching younger students HTML and CSS has deepened my own understanding more than anything else.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CORE SKILLS -->
-    <section class="section section--skills" data-reveal-group>
-      <div class="wrap">
-        <div class="section-head" data-reveal>
-          <span class="eyebrow">What I Know</span>
-          <h2>Core Skills</h2>
-          <p>Technologies and tools I work with to defend systems and investigate threats.</p>
-        </div>
-
-        <div class="skill-category" data-reveal>
-          <div class="skill-category-label">Security Operations</div>
-          <div class="skill-tile-grid">
-            <div class="skill-tile">
-              <div class="skill-tile-top"><span class="skill-tile-icon">🌐</span></div>
-              <h4>Network Security</h4>
-              <p>Segmenting, monitoring, and hardening networks against intrusion.</p>
-              <span class="skill-level">Advanced</span>
-            </div>
-            <div class="skill-tile">
-              <div class="skill-tile-top"><span class="skill-tile-icon">🔍</span></div>
-              <h4>Digital Forensics</h4>
-              <p>Recovering and analyzing digital evidence after a security incident.</p>
-              <span class="skill-level">Advanced</span>
-            </div>
-            <div class="skill-tile">
-              <div class="skill-tile-top"><span class="skill-tile-icon">📡</span></div>
-              <h4>SOC Monitoring</h4>
-              <p>Watching live traffic and alerts to catch threats as they happen.</p>
-              <span class="skill-level">Intermediate</span>
-            </div>
-            <div class="skill-tile">
-              <div class="skill-tile-top"><span class="skill-tile-icon">🕵️</span></div>
-              <h4>Threat Intelligence</h4>
-              <p>Tracking malicious actors and emerging attack patterns.</p>
-              <span class="skill-level">Advanced</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="skill-category" data-reveal>
-          <div class="skill-category-label">Programming &amp; Tools</div>
-          <div class="skill-tile-grid">
-            <div class="skill-tile">
-              <div class="skill-tile-top"><span class="skill-tile-icon">🐍</span></div>
-              <h4>Python</h4>
-              <p>Writing scripts for automation, log parsing, and security tooling.</p>
-              <span class="skill-level">Security Scripting</span>
-            </div>
-            <div class="skill-tile">
-              <div class="skill-tile-top"><span class="skill-tile-icon">🐧</span></div>
-              <h4>Linux &amp; CLI</h4>
-              <p>Comfortable navigating, scripting, and hardening Linux systems.</p>
-              <span class="skill-level">Advanced</span>
-            </div>
-            <div class="skill-tile">
-              <div class="skill-tile-top"><span class="skill-tile-icon">🐙</span></div>
-              <h4>Git &amp; GitHub</h4>
-              <p>Version control, branching, and collaborative code review.</p>
-              <span class="skill-level">Version Control</span>
-            </div>
-            <div class="skill-tile">
-              <div class="skill-tile-top"><span class="skill-tile-icon">🧰</span></div>
-              <h4>VS Code</h4>
-              <p>My daily driver for scripting, debugging, and documentation.</p>
-              <span class="skill-level">Advanced</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="audio-block" data-reveal style="margin-top: 2.5rem;">
-          <div class="audio-block-label">🎙️ Audio Introduction — <em>Godwin Chukwunonso</em></div>
-          <audio controls preload="none">
-            <source src="media/Lab-enhanced-v2.wav" type="audio/wav">
-            Your browser doesn't support embedded audio. <a href="media/Lab-enhanced-v2.wav">Download the audio introduction</a> instead.
-          </audio>
-        </div>
-      </div>
-    </section>
-
-    <!-- CORE EXPERTISE -->
-    <section class="section" data-reveal-group>
-      <div class="wrap">
-        <div class="section-head" data-reveal>
-          <span class="eyebrow">Core Expertise</span>
-          <h2>Where I focus my energy</h2>
-          <p>Four areas I'm actively building toward as a cybersecurity student.</p>
-        </div>
-        <div class="pillar-grid" data-reveal>
-          <div class="pillar-card" data-tilt>
-            <span class="pillar-icon">🔍</span>
-            <h3>Digital Forensics</h3>
-            <p>Recovering, preserving, and analyzing digital evidence after an incident.</p>
-          </div>
-          <div class="pillar-card" data-tilt>
-            <span class="pillar-icon">🕵️</span>
-            <h3>Threat Intelligence</h3>
-            <p>Tracking attacker behavior and emerging threats before they strike.</p>
-          </div>
-          <div class="pillar-card" data-tilt>
-            <span class="pillar-icon">🛡️</span>
-            <h3>SOC Operations</h3>
-            <p>Monitoring live traffic and alerts to catch intrusions as they happen.</p>
-          </div>
-          <div class="pillar-card" data-tilt>
-            <span class="pillar-icon">🌐</span>
-            <h3>Network Defense</h3>
-            <p>Segmenting, hardening, and securing infrastructure against attack.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="wrap"><div class="divider"><span class="line"></span><span class="glyph">🛡️</span><span class="line"></span></div></div>
-
-    <!-- SECURITY PRINCIPLES -->
-    <section class="section section--ink" data-reveal-group>
-      <div class="wrap">
-        <div class="section-head" data-reveal style="text-align:center; align-items:center; margin-inline:auto;">
-          <span class="eyebrow">What Guides Me</span>
-          <h2>Security Principles</h2>
-        </div>
-        <div class="principle-row" data-reveal>
-          <div class="principle-chip"><span class="principle-icon">🔐</span>Zero Trust</div>
-          <div class="principle-chip"><span class="principle-icon">🧱</span>Defense in Depth</div>
-          <div class="principle-chip"><span class="principle-icon">🔑</span>Least Privilege</div>
-          <div class="principle-chip"><span class="principle-icon">👁️</span>Continuous Vigilance</div>
-          <div class="principle-chip"><span class="principle-icon">⚖️</span>Ethical Responsibility</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECURITY METRICS -->
-    <section class="section section--dim" data-reveal-group>
-      <div class="wrap">
-        <div class="section-head" data-reveal>
-          <span class="eyebrow">By The Numbers</span>
-          <h2>Practice &amp; Learning So Far</h2>
-        </div>
-        <div class="stat-strip" data-reveal>
-          <div class="stat-strip-cell"><div class="num">3+</div><div class="label">Projects Built</div></div>
-          <div class="stat-strip-cell"><div class="num">25+</div><div class="label">CTF Challenges Attempted</div></div>
-          <div class="stat-strip-cell"><div class="num">10+</div><div class="label">Security Scripts Written</div></div>
-          <div class="stat-strip-cell"><div class="num">4.71</div><div class="label">Current GPA</div></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CERTIFICATIONS (placeholder / in progress) -->
-    <section class="section" data-reveal-group>
-      <div class="wrap">
-        <div class="section-head" data-reveal>
-          <span class="eyebrow">Credentials</span>
-          <h2>Certifications</h2>
-          <p>Currently studying toward these — added here as goals, not yet earned.</p>
-        </div>
-        <div class="cert-grid" data-reveal>
-          <div class="cert-badge">
-            <span class="cert-icon">🛡️</span>
-            <h4>CompTIA Security+</h4>
-            <span class="cert-status">In Progress</span>
-          </div>
-          <div class="cert-badge">
-            <span class="cert-icon">🕵️</span>
-            <h4>Certified Ethical Hacker (CEH)</h4>
-            <span class="cert-status">Planned</span>
-          </div>
-          <div class="cert-badge">
-            <span class="cert-icon">📡</span>
-            <h4>Cisco CyberOps Associate</h4>
-            <span class="cert-status">Planned</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- GLOBAL THREAT LANDSCAPE (decorative network section) -->
-    <section class="section section--network" data-reveal-group>
-      <div class="wrap">
-        <div class="quote-banner" data-reveal>
-          <span class="quote-mark">"</span>
-          <p>Security isn't a product you install — it's a discipline you practice, one careful decision at a time.</p>
-          <cite>— Godwin Chukwunonso</cite>
-        </div>
-      </div>
-    </section>
-
-    <!-- QUICK LINKS -->
-    <section class="section section--dim" data-reveal-group>
-      <div class="wrap">
-        <div class="section-head" data-reveal>
-          <span class="eyebrow">Explore</span>
-          <h2>Where to go from here</h2>
-        </div>
-        <div class="grid-3">
-          <a class="bio-card" href="about.html" data-reveal>
-            <h3 style="font-size:1.1rem;">About Me →</h3>
-            <p style="color: var(--slate); margin-top:0.6rem;">Education, skills, and what I do outside of class.</p>
-          </a>
-          <a class="bio-card" href="projects.html" data-reveal>
-            <h3 style="font-size:1.1rem;">Projects →</h3>
-            <p style="color: var(--slate); margin-top:0.6rem;">Four builds spanning intrusion detection, phishing defense, and forensics.</p>
-          </a>
-          <a class="bio-card" href="planner.html" data-reveal>
-            <h3 style="font-size:1.1rem;">Academic Planner →</h3>
-            <p style="color: var(--slate); margin-top:0.6rem;">The live dashboard I actually use to track coursework.</p>
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="wrap footer-inner">
-      <span>© <span data-year></span> Godwin Chukwunonso &amp; MIVA Open University. All rights reserved.</span>
-      <div class="footer-links">
-        <a href="contact.html">Contact</a>
-        <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
-    </div>
-  </footer>
-
-  <script src="js/main.js"></script>
-</body>
-</html>
-          <h4 class="hero-hud-title">Evidence Verified</h4>
-          <p class="hero-hud-text">Disk image acquired — SHA-256 hash integrity confirmed.</p>
-        </div>
-
-        <div class="avatar-frame" data-hero-item="visual" data-tilt>
-          <img src="images/Projects.jpg" alt="Godwin Chukwunonso — Cybersecurity student portrait">
-          <div class="avatar-tag">
-            <span>Projects.jpg</span>
-            <span>PORTRAIT · ON FILE</span>
-          </div>
-        </div>
-
-        <!-- HUD PANEL: bottom-right — Network Map (orbiting nodes) -->
-        <div class="hero-hud hero-hud--bottom-right">
-          <div class="hero-hud-visual">
-            <svg class="hero-hud-svg" viewBox="0 0 100 100" aria-hidden="true">
-              <circle cx="50" cy="50" r="34" class="hw-orbit-path"/>
-              <circle cx="50" cy="50" r="20" class="hw-orbit-path"/>
-              <circle cx="50" cy="50" r="4.2" class="hw-orbit-core"/>
-              <g class="hw-orbit-rotate">
-                <circle cx="50" cy="16" r="2.8" class="hw-orbit-node"/>
-              </g>
-              <g class="hw-orbit-rotate hw-orbit-rotate--reverse">
-                <circle cx="50" cy="30" r="2.2" class="hw-orbit-node hw-orbit-node--gold"/>
-              </g>
-            </svg>
-          </div>
-          <div class="hero-hud-label"><span class="hero-hud-dot"></span>Network Map</div>
-          <h4 class="hero-hud-title">Perimeter Secured</h4>
-          <p class="hero-hud-text">Contained — root cause traced to a misconfigured firewall rule.</p>
-        </div>
-
-      </div>
       <div class="scroll-cue"><span>SCROLL</span><span class="line"></span></div>
       <div class="hero-ticker">
         <div class="hero-ticker-track">
