@@ -1,24 +1,27 @@
 /* ============================================================
-   ALEX RIVERA — STUDENT PORTFOLIO & ACADEMIC PLANNER
-   Design system: ink navy / ivory paper / circuit teal / brass
+   GODWIN CHUKWUNONSO — STUDENT PORTFOLIO & ACADEMIC PLANNER
+   Design system: royal blue / shimmering gold / ivory paper
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
   /* Color tokens */
-  --ink: #0B1220;
-  --ink-soft: #16213A;
-  --ink-line: rgba(247, 245, 239, 0.12);
+  --ink: #0A1230;
+  --ink-soft: #132352;
+  --ink-line: rgba(247, 232, 189, 0.14);
   --paper: #F7F5EF;
   --paper-dim: #EDEAE1;
   --paper-line: rgba(11, 18, 32, 0.10);
   --teal: #22A6A0;
   --teal-bright: #2FC3BC;
-  --brass: #C9A24B;
+  --gold: #D4AF37;
+  --gold-bright: #F1D27A;
+  --gold-deep: #A9821F;
+  --brass: #D4AF37;
   --coral: #E2725B;
   --slate: #5B6472;
-  --mist: #A8B0BD;
+  --mist: #AAB4D4;
   --white: #FFFFFF;
 
   /* Type */
@@ -35,6 +38,41 @@
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* ---------- Royal blue + shining gold surface ---------- */
+.ink-surface,
+.section--ink,
+.hero,
+.site-nav,
+.site-footer,
+.dashboard,
+.dashboard-chrome,
+.stat-tile {
+  background:
+    radial-gradient(ellipse 900px 520px at 88% -12%, rgba(212, 175, 55, 0.20), transparent 60%),
+    radial-gradient(ellipse 640px 460px at -8% 112%, rgba(212, 175, 55, 0.10), transparent 58%),
+    linear-gradient(165deg, #0A1230 0%, #132352 55%, #0D1A3E 100%);
+  position: relative;
+}
+.ink-surface::before,
+.section--ink::before,
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 35%, rgba(241, 210, 122, 0.09) 48%, transparent 62%);
+  background-size: 260% 260%;
+  animation: goldSheen 9s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes goldSheen {
+  0%   { background-position: 0% 50%; opacity: 0.6; }
+  50%  { background-position: 100% 50%; opacity: 1; }
+  100% { background-position: 0% 50%; opacity: 0.6; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ink-surface::before, .section--ink::before, .hero::before { animation: none; }
 }
 
 /* ---------- Reset ---------- */
@@ -113,8 +151,18 @@ p { margin: 0; }
   transition: transform 0.35s var(--ease), background 0.3s var(--ease), border-color 0.3s var(--ease), color 0.3s var(--ease);
 }
 .btn:hover { transform: translateY(-2px); }
-.btn-primary { background: var(--teal); color: var(--ink); }
-.btn-primary:hover { background: var(--teal-bright); }
+.btn-primary {
+  background: linear-gradient(120deg, var(--gold-deep) 0%, var(--gold) 30%, var(--gold-bright) 50%, var(--gold) 70%, var(--gold-deep) 100%);
+  background-size: 220% 100%;
+  color: var(--ink);
+  animation: btnShine 5s linear infinite;
+}
+.btn-primary:hover { background-position: 100% 0; filter: brightness(1.05); }
+@media (prefers-reduced-motion: reduce) { .btn-primary { animation: none; } }
+@keyframes btnShine {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
 .btn-outline { border-color: currentColor; }
 .btn-outline:hover { background: var(--ink); color: var(--paper); }
 .section--ink .btn-outline:hover { background: var(--paper); color: var(--ink); }
@@ -126,7 +174,7 @@ p { margin: 0; }
   z-index: 100;
   backdrop-filter: blur(14px) saturate(160%);
   -webkit-backdrop-filter: blur(14px) saturate(160%);
-  background: rgba(11, 18, 32, 0.72);
+  background: rgba(10, 18, 48, 0.74);
   border-bottom: 1px solid var(--ink-line);
   transition: background 0.4s var(--ease);
 }
@@ -144,7 +192,7 @@ p { margin: 0; }
   letter-spacing: 0.03em;
   white-space: nowrap;
 }
-.nav-mark span { color: var(--teal); }
+.nav-mark span { color: var(--gold-bright); }
 .nav-links {
   display: flex;
   gap: 2.1rem;
@@ -212,10 +260,16 @@ p { margin: 0; }
   display: inline-block;
   width: 6px; height: 6px;
   border-radius: 50%;
-  background: var(--teal-bright);
+  background: var(--gold-bright);
   margin-right: 0.6em;
-  box-shadow: 0 0 8px var(--teal-bright);
+  box-shadow: 0 0 8px var(--gold-bright);
+  animation: dotPulse 2.2s ease-in-out infinite;
 }
+@keyframes dotPulse {
+  0%, 100% { box-shadow: 0 0 6px var(--gold-bright); opacity: 0.85; }
+  50% { box-shadow: 0 0 14px var(--gold-bright); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) { .status-bar .dot { animation: none; } }
 
 /* ---------- Hero (split screen) ---------- */
 .hero {
@@ -239,8 +293,14 @@ p { margin: 0; }
 }
 .hero-copy h1 em {
   font-style: italic;
-  color: var(--teal-bright);
+  background: linear-gradient(100deg, var(--gold-deep), var(--gold-bright), var(--gold));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: btnShine 6s linear infinite;
 }
+@media (prefers-reduced-motion: reduce) { .hero-copy h1 em { animation: none; } }
 .hero-lede {
   max-width: 46ch;
   color: var(--mist);
@@ -354,7 +414,7 @@ p { margin: 0; }
 /* ---------- Magnetic buttons ---------- */
 .btn { transition: transform 0.35s var(--ease-spring), background 0.3s var(--ease-smooth), border-color 0.3s var(--ease-smooth), color 0.3s var(--ease-smooth), box-shadow 0.35s var(--ease-smooth); }
 .btn:active { transform: scale(0.96); }
-.btn-primary:hover { box-shadow: 0 14px 30px -10px rgba(34,166,160,0.45); }
+.btn-primary:hover { box-shadow: 0 14px 32px -10px rgba(212,175,55,0.5); }
 
 /* ---------- Scroll reveal ---------- */
 [data-reveal] {
@@ -464,7 +524,6 @@ p { margin: 0; }
 
 /* ---------- Planner dashboard ---------- */
 .dashboard {
-  background: var(--ink);
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: 0 40px 80px -40px rgba(11,18,32,0.5);
@@ -489,7 +548,7 @@ p { margin: 0; }
   gap: 1px;
   background: var(--ink-line);
 }
-.stat-tile { background: var(--ink); color: var(--paper); padding: 1.4rem 1.6rem; }
+.stat-tile { color: var(--paper); padding: 1.4rem 1.6rem; }
 .stat-tile .num { font-family: var(--font-display); font-size: 2rem; color: var(--teal-bright); transition: transform 0.3s var(--ease-spring); display: inline-block; }
 .stat-tile .num.pulse { animation: statPulse 0.5s var(--ease-spring); }
 @keyframes statPulse { 0% { transform: scale(1); } 40% { transform: scale(1.18); color: var(--brass); } 100% { transform: scale(1); } }
@@ -764,7 +823,6 @@ p { margin: 0; }
 
 /* ---------- Footer ---------- */
 .site-footer {
-  background: var(--ink);
   color: var(--mist);
   padding-block: 2.4rem;
 }
