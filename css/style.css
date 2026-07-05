@@ -428,96 +428,118 @@ p { margin: 0; }
 }
 
 /* ============================================================
-   HERO DECORATIONS (Cybersecurity Theme) — fills empty space
-   left/right and top/bottom of the split hero with subtle,
-   on-theme motifs. Pure CSS, no HTML changes required.
+   HERO DECORATIONS (Cyber-Galaxy Theme) — fills empty space
+   on both sides of the split hero with a drifting starfield /
+   constellation-network effect (glowing nodes + connecting
+   lines), styled in teal/gold. Pure CSS, no HTML required.
    ============================================================ */
 
-/* Left side: Top accent — animated code/threat visualization */
+/* -------- Left side (dark): starfield of glowing nodes -------- */
 .hero-copy::after {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 140px;
-  background: linear-gradient(180deg,
-    rgba(34, 166, 160, 0.08) 0%,
-    rgba(212, 175, 55, 0.04) 40%,
-    transparent 100%);
+  inset: 0;
   background-image:
-    repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(34, 166, 160, 0.06) 2px, rgba(34, 166, 160, 0.06) 4px),
-    repeating-linear-gradient(0deg, transparent, transparent 12px, rgba(34, 166, 160, 0.04) 12px, rgba(34, 166, 160, 0.04) 14px);
-  background-size: 80px 60px, 100% 40px;
-  animation: codeFlow 8s linear infinite;
+    radial-gradient(1.5px 1.5px at 8% 12%, var(--gold-bright), transparent),
+    radial-gradient(2px 2px at 22% 6%, var(--teal-bright), transparent),
+    radial-gradient(1px 1px at 35% 18%, var(--paper), transparent),
+    radial-gradient(1.5px 1.5px at 48% 9%, var(--gold-bright), transparent),
+    radial-gradient(1px 1px at 60% 15%, var(--paper), transparent),
+    radial-gradient(2px 2px at 72% 5%, var(--teal-bright), transparent),
+    radial-gradient(1.5px 1.5px at 85% 20%, var(--gold-bright), transparent),
+    radial-gradient(1px 1px at 94% 10%, var(--paper), transparent),
+    radial-gradient(1.5px 1.5px at 15% 82%, var(--teal-bright), transparent),
+    radial-gradient(1px 1px at 30% 90%, var(--paper), transparent),
+    radial-gradient(2px 2px at 45% 85%, var(--gold-bright), transparent),
+    radial-gradient(1px 1px at 65% 92%, var(--paper), transparent),
+    radial-gradient(1.5px 1.5px at 80% 87%, var(--teal-bright), transparent),
+    radial-gradient(1px 1px at 92% 80%, var(--gold-bright), transparent),
+    linear-gradient(115deg, transparent 15%, rgba(34,166,160,0.10) 25%, transparent 35%),
+    linear-gradient(65deg, transparent 55%, rgba(212,175,55,0.08) 65%, transparent 75%);
+  background-size: 100% 100%;
+  animation: galaxyDrift 22s linear infinite, galaxyTwinkle 4s ease-in-out infinite;
+  opacity: 0.85;
   pointer-events: none;
   z-index: 0;
 }
 
-@keyframes codeFlow {
-  0% { background-position: 0 0, 0 0; opacity: 0.5; }
-  50% { opacity: 0.8; }
-  100% { background-position: 80px 0, 0 40px; opacity: 0.5; }
+@keyframes galaxyDrift {
+  0%   { background-position: 0 0; }
+  100% { background-position: -60px 40px; }
 }
-
+@keyframes galaxyTwinkle {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
 @media (prefers-reduced-motion: reduce) {
-  .hero-copy::after { animation: none; }
+  .hero-copy::after { animation: none; opacity: 0.7; }
 }
 
-/* Right side: Grid background (digital forensics interface) */
+/* -------- Right side (light): constellation network -------- */
 .hero-visual::before {
   content: '';
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(var(--paper-dim) 1px, transparent 1px),
-    linear-gradient(90deg, var(--paper-dim) 1px, transparent 1px),
-    radial-gradient(ellipse 600px 400px at 50% 50%, rgba(34, 166, 160, 0.04), transparent 70%);
-  background-size: 48px 48px, 48px 48px, 100% 100%;
-  background-position: 0 0, 0 0, 0 0;
+    radial-gradient(2px 2px at 10% 15%, var(--teal), transparent),
+    radial-gradient(1.5px 1.5px at 20% 30%, var(--gold), transparent),
+    radial-gradient(2px 2px at 32% 10%, var(--teal-bright), transparent),
+    radial-gradient(1.5px 1.5px at 45% 22%, var(--gold-bright), transparent),
+    radial-gradient(2px 2px at 58% 8%, var(--teal), transparent),
+    radial-gradient(1.5px 1.5px at 70% 26%, var(--gold), transparent),
+    radial-gradient(2px 2px at 85% 14%, var(--teal-bright), transparent),
+    radial-gradient(1.5px 1.5px at 92% 32%, var(--gold-bright), transparent),
+    radial-gradient(2px 2px at 12% 78%, var(--gold), transparent),
+    radial-gradient(1.5px 1.5px at 25% 88%, var(--teal), transparent),
+    radial-gradient(2px 2px at 40% 74%, var(--gold-bright), transparent),
+    radial-gradient(1.5px 1.5px at 55% 90%, var(--teal-bright), transparent),
+    radial-gradient(2px 2px at 68% 76%, var(--gold), transparent),
+    radial-gradient(1.5px 1.5px at 82% 88%, var(--teal), transparent),
+    radial-gradient(2px 2px at 94% 72%, var(--gold-bright), transparent),
+    linear-gradient(28deg, transparent 18%, rgba(34,166,160,0.14) 26%, transparent 34%),
+    linear-gradient(152deg, transparent 40%, rgba(212,175,55,0.12) 48%, transparent 56%),
+    linear-gradient(64deg, transparent 62%, rgba(34,166,160,0.10) 70%, transparent 78%);
+  background-size: 100% 100%;
+  animation: galaxyDriftLight 26s linear infinite, galaxyTwinkleLight 4.5s ease-in-out infinite;
+  opacity: 0.9;
   pointer-events: none;
   z-index: 0;
 }
 
-/* Right side: Floating security badge (top-left corner) */
+@keyframes galaxyDriftLight {
+  0%   { background-position: 0 0; }
+  100% { background-position: 50px -35px; }
+}
+@keyframes galaxyTwinkleLight {
+  0%, 100% { opacity: 0.65; }
+  50% { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-visual::before { animation: none; opacity: 0.75; }
+}
+
+/* Faint orbiting rings behind the photo, ties into the "galaxy" motif.
+   Placed on .hero-visual (not .avatar-frame) so overflow:hidden on the
+   frame doesn't clip them. */
 .hero-visual::after {
-  content: '🔒';
+  content: '';
   position: absolute;
-  top: 3rem;
-  left: 2rem;
-  font-size: 2.2rem;
-  opacity: 0.15;
-  animation: floatBadge 6s ease-in-out infinite;
-  z-index: 1;
+  top: 50%; left: 50%;
+  width: min(94%, 460px);
+  height: min(94%, 460px);
+  border: 1px dashed rgba(34, 166, 160, 0.28);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  animation: orbitSpin 34s linear infinite;
+  z-index: 0;
   pointer-events: none;
 }
-
-@keyframes floatBadge {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-16px) rotate(3deg); }
+@keyframes orbitSpin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
 }
-
 @media (prefers-reduced-motion: reduce) {
   .hero-visual::after { animation: none; }
-}
-
-/* Shield accent (bottom-right corner of right side, behind photo) */
-.avatar-frame::before {
-  content: '🛡️';
-  position: absolute;
-  bottom: -8px;
-  right: -8px;
-  font-size: 3.2rem;
-  opacity: 0.08;
-  z-index: -1;
-  animation: shieldPulse 4s ease-in-out infinite;
-}
-
-@keyframes shieldPulse {
-  0%, 100% { opacity: 0.06; transform: scale(1); }
-  50% { opacity: 0.12; transform: scale(1.05); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .avatar-frame::before { animation: none; }
 }
 
 /* Enhanced status ticker glow */
