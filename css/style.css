@@ -43,7 +43,6 @@
 /* ---------- Royal blue + shining gold surface ---------- */
 .ink-surface,
 .section--ink,
-.hero,
 .site-nav,
 .site-footer,
 .dashboard,
@@ -57,8 +56,7 @@
   position: relative;
 }
 .ink-surface::before,
-.section--ink::before,
-.hero::before {
+.section--ink::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -73,7 +71,7 @@
   100% { background-position: 0% 50%; opacity: 0.6; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .ink-surface::before, .section--ink::before, .hero::before { animation: none; }
+  .ink-surface::before, .section--ink::before { animation: none; }
 }
 
 /* ---------- Reset ---------- */
@@ -272,26 +270,53 @@ p { margin: 0; }
 }
 @media (prefers-reduced-motion: reduce) { .status-bar .dot { animation: none; } }
 
-/* ---------- Hero (split screen) ---------- */
+/* ============================================================
+   HERO (SPLIT SCREEN) — EDITED
+   Left = dark blue with text. Right = light paper side with
+   a small contained photo. Previously the whole .hero block
+   forced the dark-blue/gold background across both columns;
+   now .hero itself has no background, .hero-copy carries the
+   dark side, and .hero-visual carries the light side.
+   ============================================================ */
 .hero {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
   min-height: calc(100svh - 66px);
-  background-color: var(--ink);
   color: var(--paper);
   position: relative;
 }
 .hero-copy {
+  background:
+    radial-gradient(ellipse 900px 520px at 88% -12%, rgba(212, 175, 55, 0.20), transparent 60%),
+    radial-gradient(ellipse 640px 460px at -8% 112%, rgba(212, 175, 55, 0.10), transparent 58%),
+    radial-gradient(ellipse 520px 420px at 50% 105%, rgba(200, 70, 60, 0.09), transparent 62%),
+    linear-gradient(165deg, #0A1230 0%, #132352 55%, #0D1A3E 100%);
+  color: var(--paper);
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 1.6rem;
   padding: clamp(2rem, 6vw, 5rem);
   position: relative;
+  overflow: hidden;
+}
+.hero-copy::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 35%, rgba(241, 210, 122, 0.09) 48%, transparent 62%);
+  background-size: 260% 260%;
+  animation: goldSheen 9s ease-in-out infinite;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-copy::before { animation: none; }
 }
 .hero-copy h1 {
   font-size: clamp(2.4rem, 5vw, 4.1rem);
   letter-spacing: -0.01em;
+  position: relative;
+  z-index: 1;
 }
 /* ---------- Hero bottom ticker (fills dead space, SOC-monitor motif) ---------- */
 .hero-ticker {
@@ -356,12 +381,14 @@ p { margin: 0; }
   max-width: 46ch;
   color: var(--mist);
   font-size: 1.05rem;
+  position: relative;
+  z-index: 1;
 }
-.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem; position: relative; z-index: 1; }
 
 .hero-visual {
   position: relative;
-  background: transparent;
+  background: var(--paper);
   display: flex;
   align-items: center;
   justify-content: center;
