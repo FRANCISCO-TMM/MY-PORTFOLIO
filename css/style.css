@@ -277,12 +277,7 @@ p { margin: 0; }
 @media (prefers-reduced-motion: reduce) { .status-bar .dot { animation: none; } }
 
 /* ============================================================
-   HERO (SPLIT SCREEN) — EDITED
-   Left = dark blue with text. Right = light paper side with
-   a small contained photo. Previously the whole .hero block
-   forced the dark-blue/gold background across both columns;
-   now .hero itself has no background, .hero-copy carries the
-   dark side, and .hero-visual carries the light side.
+   HERO (SPLIT SCREEN)
    ============================================================ */
 .hero {
   display: grid;
@@ -439,13 +434,8 @@ p { margin: 0; }
 }
 
 /* ============================================================
-   HERO DECORATIONS (Cyber-Galaxy Theme) — fills empty space
-   on both sides of the split hero with a drifting starfield /
-   constellation-network effect (glowing nodes + connecting
-   lines), styled in teal/gold. Pure CSS, no HTML required.
+   HERO DECORATIONS (Cyber-Galaxy Theme)
    ============================================================ */
-
-/* -------- Left side (dark): starfield of glowing nodes -------- */
 .hero-copy::after {
   content: '';
   position: absolute;
@@ -486,7 +476,6 @@ p { margin: 0; }
   .hero-copy::after { animation: none; opacity: 0.7; }
 }
 
-/* -------- Right side (light): constellation network -------- */
 .hero-visual::before {
   content: '';
   position: absolute;
@@ -529,9 +518,6 @@ p { margin: 0; }
   .hero-visual::before { animation: none; opacity: 0.75; }
 }
 
-/* Faint orbiting rings behind the photo, ties into the "galaxy" motif.
-   Placed on .hero-visual (not .avatar-frame) so overflow:hidden on the
-   frame doesn't clip them. */
 .hero-visual::after {
   content: '';
   position: absolute;
@@ -553,7 +539,6 @@ p { margin: 0; }
   .hero-visual::after { animation: none; }
 }
 
-/* Enhanced status ticker glow */
 .hero-ticker {
   box-shadow: inset 0 2px 8px rgba(34, 166, 160, 0.12),
               0 -2px 6px rgba(212, 175, 55, 0.08);
@@ -574,7 +559,6 @@ p { margin: 0; }
   .hero-ticker-track .glow { animation: none; text-shadow: none; }
 }
 
-/* Ensure content stays above decorations */
 .hero-copy h1, .hero-copy p, .hero-lede, .hero-actions, .eyebrow {
   position: relative;
   z-index: 2;
@@ -615,25 +599,28 @@ p { margin: 0; }
 }
 
 /* ============================================================
-   HERO GALACTIC HUD PANELS
-   Four bold, glass-panel "instrument readouts" anchored to the
-   corners of the split hero, each carrying a live animated SVG
-   (waveform / radar sweep / scan beam / orbiting nodes). Built
-   to read as a futuristic SOC command-center overlay.
-
-   Shown only from 1100px wide with enough vertical room
-   (min-height 640px) — this is a deliberate fix for the
-   overlap issue: below that, the hero switches to a single
-   stacked column and there simply isn't safe space for these
-   without colliding with the heading or the photo, so they're
-   hidden entirely rather than fighting for room. Everything is
-   pointer-events: none so they never block a click.
+   HERO HUD PANELS — now mobile-visible by default (stacked grid),
+   and upgraded to floating absolute overlays only on roomy desktop
+   viewports. See .hero-hud-group / .hero-hud below.
    ============================================================ */
+.hero-hud-group {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  padding: 0.5rem var(--gutter) 5.5rem;
+  position: relative;
+  z-index: 2;
+}
+@media (max-width: 599px) {
+  .hero-hud-group { grid-template-columns: 1fr; }
+}
+
 .hero-hud {
-  position: absolute;
-  z-index: 3;
-  display: none; /* revealed by the min-width/min-height query below */
-  width: 250px;
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
   border-radius: 18px;
   padding: 1.1rem 1.2rem 1.25rem;
   background: linear-gradient(160deg, rgba(23, 41, 92, 0.78), rgba(8, 15, 40, 0.9));
@@ -646,8 +633,6 @@ p { margin: 0; }
   pointer-events: none;
   animation: hudFloat 7s ease-in-out infinite;
 }
-/* animated gradient border-glow, drawn with a masked pseudo-element
-   so it doesn't add a second box behind the card */
 .hero-hud::before {
   content: '';
   position: absolute;
@@ -662,7 +647,6 @@ p { margin: 0; }
   animation: hudBorderSheen 6s linear infinite;
   pointer-events: none;
 }
-/* faint scanline texture for a display/monitor feel */
 .hero-hud::after {
   content: '';
   position: absolute;
@@ -721,24 +705,6 @@ p { margin: 0; }
   flex-shrink: 0;
   animation: dotPulse 2.2s ease-in-out infinite;
 }
-
-/* the right column sits on light paper — flip the glass so it still reads as a HUD */
-.hero-visual .hero-hud {
-  background: linear-gradient(160deg, rgba(255,255,255,0.86), rgba(240,238,230,0.72));
-  box-shadow:
-    0 30px 70px -26px rgba(11,18,32,0.28),
-    0 0 0 1px rgba(11,18,32,0.03) inset;
-}
-.hero-visual .hero-hud-label { color: var(--gold-deep); }
-.hero-visual .hero-hud-title { color: var(--ink); }
-.hero-visual .hero-hud-text { color: var(--slate); }
-.hero-visual .hero-hud::after { mix-blend-mode: multiply; opacity: 0.5; }
-
-/* corner placements */
-.hero-hud--top-left { top: 2.2rem; left: 2.2rem; }
-.hero-hud--bottom-left { bottom: 6.4rem; left: 2.2rem; }
-.hero-hud--top-right { top: 2.2rem; right: 2.2rem; }
-.hero-hud--bottom-right { bottom: 6.4rem; right: 2.2rem; }
 
 /* -------- Live SOC Feed: scrolling waveform -------- */
 .hw-wave-line {
@@ -805,7 +771,7 @@ p { margin: 0; }
 /* -------- Network Map: orbiting nodes around a core -------- */
 .hw-orbit-core { fill: var(--gold-bright); filter: drop-shadow(0 0 6px rgba(241,210,122,0.9)); }
 .hw-orbit-path { fill: none; stroke: rgba(255,255,255,0.14); stroke-width: 1; stroke-dasharray: 2 4; }
-.hero-visual .hw-orbit-path { stroke: rgba(11,18,32,0.16); }
+.hero-hud--light .hw-orbit-path { stroke: rgba(11,18,32,0.16); }
 .hw-orbit-rotate { transform-origin: 50px 50px; animation: hwSpin 7s linear infinite; }
 .hw-orbit-rotate--reverse { animation-direction: reverse; animation-duration: 10s; }
 .hw-orbit-node { fill: var(--teal-bright); filter: drop-shadow(0 0 5px rgba(47,195,188,0.85)); }
@@ -822,9 +788,35 @@ p { margin: 0; }
   .hw-orbit-rotate { animation: none; }
 }
 
-/* reveal the HUD panels only where there's genuinely free space */
+/* ---------- Desktop-only: switch the HUD group to floating corner overlays ---------- */
 @media (min-width: 1100px) and (min-height: 640px) {
-  .hero-hud { display: block; }
+  .hero-hud-group {
+    position: absolute;
+    inset: 0;
+    display: block;
+    padding: 0;
+    pointer-events: none;
+  }
+  .hero-hud {
+    position: absolute;
+    width: 250px;
+  }
+  .hero-hud--top-left { top: 2.2rem; left: 2.2rem; }
+  .hero-hud--bottom-left { bottom: 6.4rem; left: 2.2rem; }
+  .hero-hud--top-right { top: 2.2rem; right: 2.2rem; }
+  .hero-hud--bottom-right { bottom: 6.4rem; right: 2.2rem; }
+
+  /* the two panels that float over the light photo side flip to a light glass style */
+  .hero-hud--light {
+    background: linear-gradient(160deg, rgba(255,255,255,0.86), rgba(240,238,230,0.72));
+    box-shadow:
+      0 30px 70px -26px rgba(11,18,32,0.28),
+      0 0 0 1px rgba(11,18,32,0.03) inset;
+  }
+  .hero-hud--light .hero-hud-label { color: var(--gold-deep); }
+  .hero-hud--light .hero-hud-title { color: var(--ink); }
+  .hero-hud--light .hero-hud-text { color: var(--slate); }
+  .hero-hud--light::after { mix-blend-mode: multiply; opacity: 0.5; }
 }
 
 /* ---------- Scroll progress bar ---------- */
