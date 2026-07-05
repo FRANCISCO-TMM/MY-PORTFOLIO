@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects — Godwin Chukwunonso</title>
-  <meta name="description" content="Selected projects by Godwin Chukwunonso spanning cybersecurity, digital forensics, and full-stack web development.">
+  <meta name="description" content="Cybersecurity projects by Godwin Chukwunonso spanning intrusion detection, phishing defense, password security, and log analysis.">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -30,9 +30,9 @@
   <main>
     <section class="page-intro">
       <div class="wrap">
-        <span class="eyebrow">Selected work</span>
-        <h1>Three projects, three different problems.</h1>
-        <p>Each one taught me something I couldn't have learned from a lecture alone.</p>
+        <span class="eyebrow">What I've Built</span>
+        <h1>My Projects</h1>
+        <p>A collection of cybersecurity-focused builds, each tackling a real defensive or investigative problem.</p>
       </div>
     </section>
 
@@ -59,13 +59,13 @@
 
           <article class="project-card" data-reveal data-tilt>
             <div class="project-media">
-              <img src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?q=80&w=800&auto=format&fit=crop" alt="Line chart showing cryptocurrency price movement">
+              <img src="https://images.unsplash.com/photo-1633265486064-086b219458ec?q=80&w=800&auto=format&fit=crop" alt="Warning symbol over an email inbox interface, representing phishing detection">
             </div>
             <div class="project-body">
-              <h3>VaultTrack</h3>
-              <p>A personal crypto-portfolio tracker that pulls live prices, calculates gain/loss, and charts holdings over time — built to actually manage my own small portfolio.</p>
+              <h3>PhishGuard</h3>
+              <p>A phishing URL and email-header scanner that flags suspicious links, spoofed domains, and common social-engineering red flags before a user clicks through.</p>
               <div class="project-stack">
-                <span>JavaScript</span><span>CoinGecko API</span><span>Chart.js</span><span>LocalStorage</span>
+                <span>JavaScript</span><span>Regex Heuristics</span><span>WHOIS API</span>
               </div>
               <div class="project-links">
                 <a href="#" target="_blank" rel="noopener">Live demo ↗</a>
@@ -76,13 +76,30 @@
 
           <article class="project-card" data-reveal data-tilt>
             <div class="project-media">
-              <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800&auto=format&fit=crop" alt="Students at a campus event">
+              <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?q=80&w=800&auto=format&fit=crop" alt="Padlock icon over a password entry field, representing password security">
             </div>
             <div class="project-body">
-              <h3>CampusLink</h3>
-              <p>A full-stack event-discovery platform where students post and RSVP to campus events. Built with a small team for a software engineering course; now used by two campus clubs.</p>
+              <h3>VaultCheck</h3>
+              <p>A client-side password strength auditor that scores entropy, flags reused patterns, and checks against known breach corpora — with nothing ever leaving the browser.</p>
               <div class="project-stack">
-                <span>React</span><span>Node.js</span><span>MongoDB</span><span>Express</span>
+                <span>JavaScript</span><span>zxcvbn</span><span>k-Anonymity API</span>
+              </div>
+              <div class="project-links">
+                <a href="#" target="_blank" rel="noopener">Live demo ↗</a>
+                <a href="#" target="_blank" rel="noopener">Source code ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-reveal data-tilt>
+            <div class="project-media">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop" alt="Terminal showing scrolling server log data, representing log analysis">
+            </div>
+            <div class="project-body">
+              <h3>LogSleuth</h3>
+              <p>A SIEM-style log parser that ingests raw server and firewall logs, clusters anomalies, and surfaces a ranked list of events worth an analyst's attention.</p>
+              <div class="project-stack">
+                <span>Python</span><span>Pandas</span><span>Regex</span><span>CSV/Syslog</span>
               </div>
               <div class="project-links">
                 <a href="#" target="_blank" rel="noopener">Live demo ↗</a>
@@ -94,6 +111,49 @@
         </div>
       </div>
     </section>
+
+    <!-- HOW I BUILD -->
+    <section class="section section--dim" data-reveal-group>
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">My Workflow</span>
+          <h2>How I Build</h2>
+        </div>
+        <div class="build-grid" data-reveal>
+          <div class="build-step">
+            <span class="build-icon">📐</span>
+            <h4>Plan</h4>
+            <p>Sketch wireframes, define the threat model, list features, write user stories.</p>
+          </div>
+          <div class="build-step">
+            <span class="build-icon">🏗️</span>
+            <h4>Build</h4>
+            <p>Structure first, then scripting logic, then the detection or defense mechanism.</p>
+          </div>
+          <div class="build-step">
+            <span class="build-icon">🧪</span>
+            <h4>Test</h4>
+            <p>Simulate attacks in a sandboxed lab, check edge cases, and validate false-positive rates.</p>
+          </div>
+          <div class="build-step">
+            <span class="build-icon">🚀</span>
+            <h4>Deploy</h4>
+            <p>Push to GitHub, document the setup, and share via GitHub Pages or a demo environment.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section">
+      <div class="wrap">
+        <div class="cta-band" data-reveal>
+          <h3>Have a project idea?</h3>
+          <p>I'm always open to collaboration, feedback, or just a chat about cybersecurity.</p>
+          <a href="contact.html" class="btn btn-primary">Let's Talk →</a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -101,17 +161,8 @@
       <span>© <span data-year></span> Godwin Chukwunonso &amp; MIVA Open University. All rights reserved.</span>
       <div class="footer-links">
         <a href="contact.html">Contact</a>
-        <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
-    </div>
-  </footer>
-
-  <script src="js/main.js"></script>
-</body>
-</html>
-        <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/FRANCISCO-TMM" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/chukwunonso-godwin-7482163b1" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
   </footer>
