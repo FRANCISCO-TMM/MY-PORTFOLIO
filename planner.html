@@ -36,7 +36,21 @@
       </div>
     </section>
 
-    <section class="section">
+    <!-- ABOUT THIS TOOL -->
+    <section class="section" data-reveal-group>
+      <div class="wrap grid-2">
+        <div class="bio-card" data-reveal>
+          <h3 style="font-size:1.2rem; margin-bottom: 0.8rem;">Why I built this</h3>
+          <p style="color: var(--slate);">Sticky notes and memory weren't cutting it once I had coursework, CTF practice, and a capstone project running at the same time. This planner is my own lightweight Kanban board — built with vanilla HTML, CSS, and JavaScript as part of my COS 106 Lab Assessment, and something I genuinely use every week.</p>
+        </div>
+        <div class="bio-card" data-reveal>
+          <h3 style="font-size:1.2rem; margin-bottom: 0.8rem;">How it's built</h3>
+          <p style="color: var(--slate);">No backend, no database — tasks are saved to your browser's <code>localStorage</code>, so they persist between visits on the same device. Everything is DOM manipulation and array logic: add, move, complete, and delete a task, and the board and stats re-render instantly.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--dim">
       <div class="wrap">
         <div class="dashboard">
           <div class="dashboard-chrome">
@@ -90,7 +104,61 @@
                 <div class="task-list" data-list="done"></div>
               </div>
             </div>
+
+            <div class="principle-row" style="justify-content:flex-start; margin-top: 1.6rem; padding-top: 1.4rem; border-top: 1px solid var(--paper-line);">
+              <div class="principle-chip" style="background: var(--paper-dim); color: var(--ink); border-color: var(--paper-line);"><span style="width:10px; height:10px; border-radius:50%; background: var(--coral); display:inline-block;"></span> High priority</div>
+              <div class="principle-chip" style="background: var(--paper-dim); color: var(--ink); border-color: var(--paper-line);"><span style="width:10px; height:10px; border-radius:50%; background: var(--brass); display:inline-block;"></span> Medium priority</div>
+              <div class="principle-chip" style="background: var(--paper-dim); color: var(--ink); border-color: var(--paper-line);"><span style="width:10px; height:10px; border-radius:50%; background: var(--teal); display:inline-block;"></span> Low priority</div>
+            </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section" data-reveal-group>
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">Workflow</span>
+          <h2>How it works</h2>
+        </div>
+        <div class="build-grid" data-reveal>
+          <div class="build-step">
+            <span class="build-icon">📝</span>
+            <h4>Add</h4>
+            <p>Type a task, set a due date and priority, then add it to the board.</p>
+          </div>
+          <div class="build-step">
+            <span class="build-icon">➡️</span>
+            <h4>Progress</h4>
+            <p>Move a task from To Do to In Progress as you start working on it.</p>
+          </div>
+          <div class="build-step">
+            <span class="build-icon">✅</span>
+            <h4>Complete</h4>
+            <p>Mark it done — the stats and completion rate update instantly.</p>
+          </div>
+          <div class="build-step">
+            <span class="build-icon">💾</span>
+            <h4>Auto-save</h4>
+            <p>Every change is saved to your browser, so it's still there next time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STUDY PRINCIPLES -->
+    <section class="section section--ink" data-reveal-group>
+      <div class="wrap">
+        <div class="section-head" data-reveal style="text-align:center; align-items:center; margin-inline:auto;">
+          <span class="eyebrow">How I Plan</span>
+          <h2>A few rules I try to follow</h2>
+        </div>
+        <div class="principle-row" data-reveal>
+          <div class="principle-chip"><span class="principle-icon">🎯</span>Tackle high-priority first</div>
+          <div class="principle-chip"><span class="principle-icon">⏱️</span>Time-block deep work</div>
+          <div class="principle-chip"><span class="principle-icon">🔁</span>Review the board weekly</div>
+          <div class="principle-chip"><span class="principle-icon">🧘</span>One task at a time</div>
         </div>
       </div>
     </section>
@@ -101,16 +169,6 @@
       <span>© <span data-year></span> Godwin Chukwunonso &amp; MIVA Open University. All rights reserved.</span>
       <div class="footer-links">
         <a href="contact.html">Contact</a>
-        <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
-    </div>
-  </footer>
-
-  <script src="js/main.js"></script>
-  <script src="js/planner.js"></script>
-</body>
-</html>
         <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
         <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
       </div>
