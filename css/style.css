@@ -607,11 +607,6 @@ p { margin: 0; }
   pointer-events: none;
   overflow: visible;
 }
-.ring-text-rotate {
-  transform-box: view-box;
-  transform-origin: 50% 50%;
-  animation: orbitSpin 40s linear infinite;
-}
 .ring-text {
   font-family: var(--font-mono);
   font-size: 9.5px;
@@ -619,7 +614,6 @@ p { margin: 0; }
   fill: var(--gold-bright);
   text-transform: uppercase;
 }
-@media (prefers-reduced-motion: reduce) { .ring-text-rotate { animation: none; } }
 .hero-photo-ring .orbit-ring-inner {
   content: '';
   position: absolute;
@@ -664,7 +658,7 @@ p { margin: 0; }
   to   { transform: translate(-50%, -50%) rotate(0deg); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-photo-ring .orbit-ring-inner, .hero-photo-ring .orbit-dot, .ring-text-rotate { animation: none; }
+  .hero-photo-ring .orbit-ring-inner, .hero-photo-ring .orbit-dot { animation: none; }
 }
 
 .hero-ticker {
