@@ -465,10 +465,15 @@ p { margin: 0; }
   letter-spacing: 0.05em;
   color: var(--slate);
   display: flex;
-  gap: 0.8em;
+  flex-direction: column;
+  gap: 0.4em;
   justify-content: center;
+  align-items: center;
   position: relative;
   z-index: 1;
+}
+@media (min-width: 480px) {
+  .avatar-caption { flex-direction: row; gap: 0.8em; }
 }
 .avatar-caption .glow { color: var(--gold-deep); }
 .avatar-tag {
@@ -1813,7 +1818,10 @@ p { margin: 0; }
   .nav-toggle { display: block; }
   .nav-links {
     position: fixed;
-    inset: 66px 0 0 0;
+    top: 66px;
+    right: 0;
+    bottom: 0;
+    left: 0;
     background-color: #060B1F !important;
     flex-direction: column;
     padding: 2.5rem var(--gutter);
