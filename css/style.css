@@ -1689,10 +1689,11 @@ p { margin: 0; }
 }
 .audio-block-label {
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: clamp(0.95rem, 2.8vw, 1.25rem);
+  line-height: 1.5;
   color: var(--mist);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.6em;
 }
 .audio-block-label em { color: var(--gold-bright); font-style: italic; }
