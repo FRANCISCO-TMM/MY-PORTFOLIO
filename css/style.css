@@ -160,10 +160,16 @@ p { margin: 0; }
   position: sticky;
   top: 0;
   z-index: 100;
+  border-bottom: 1px solid var(--ink-line);
+}
+.site-nav::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   backdrop-filter: blur(14px) saturate(160%);
   -webkit-backdrop-filter: blur(14px) saturate(160%);
   background: rgba(10, 18, 48, 0.74);
-  border-bottom: 1px solid var(--ink-line);
   transition: background 0.4s var(--ease);
 }
 .nav-inner {
@@ -380,9 +386,9 @@ p { margin: 0; }
 .hero-visual {
   position: relative;
   background:
-    radial-gradient(ellipse 620px 460px at 50% 30%, rgba(212, 175, 55, 0.16), transparent 62%),
-    radial-gradient(ellipse 520px 420px at 15% 90%, rgba(34, 166, 160, 0.10), transparent 60%),
-    linear-gradient(165deg, #EFE9D8 0%, #E7DFC8 55%, #DED3B4 100%);
+    radial-gradient(ellipse 640px 520px at 50% 38%, rgba(212, 175, 55, 0.16), transparent 65%),
+    radial-gradient(ellipse 500px 420px at 85% 95%, rgba(34, 166, 160, 0.10), transparent 60%),
+    linear-gradient(175deg, #0C1638 0%, #0A1230 55%, #081026 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -468,6 +474,8 @@ p { margin: 0; }
   .avatar-caption { flex-direction: row; gap: 0.8em; }
 }
 .avatar-caption .glow { color: var(--gold-deep); }
+.hero-visual .avatar-caption { color: var(--mist); }
+.hero-visual .avatar-caption .glow { color: var(--gold-bright); }
 .avatar-tag {
   position: absolute;
   bottom: 14px; left: 14px; right: 14px;
