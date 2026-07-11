@@ -1701,8 +1701,9 @@ p { margin: 0; }
   gap: 0.9rem;
 }
 .audio-block-label {
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2.6vw, 1.5rem);
+  line-height: 1.4;
   color: var(--mist);
   display: flex;
   align-items: center;
