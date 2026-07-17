@@ -109,6 +109,25 @@
           <p class="hero-hud-text">Real-time log correlation across endpoints — zero unresolved alerts.</p>
         </div>
 
+        <div class="hero-hud hero-hud--bottom-left">
+          <div class="hero-hud-visual">
+            <svg class="hero-hud-svg" viewBox="0 0 100 100" aria-hidden="true">
+              <circle cx="50" cy="50" r="46" class="hw-radar-ring"/>
+              <circle cx="50" cy="50" r="30" class="hw-radar-ring"/>
+              <circle cx="50" cy="50" r="14" class="hw-radar-ring"/>
+              <g class="hw-radar-sweep">
+                <path d="M50,50 L50,4 A46,46 0 0,1 88,28 Z" class="hw-radar-sweep-fill"/>
+                <line x1="50" y1="50" x2="50" y2="4" class="hw-radar-sweep-edge"/>
+              </g>
+              <circle cx="68" cy="30" r="2.6" class="hw-radar-blip"/>
+              <circle cx="32" cy="66" r="2.2" class="hw-radar-blip hw-radar-blip--b"/>
+            </svg>
+          </div>
+          <div class="hero-hud-label"><span class="hero-hud-dot"></span>Threat Radar</div>
+          <h4 class="hero-hud-title">Tracking Activity</h4>
+          <p class="hero-hud-text">New phishing campaign identified, targeting .edu domains.</p>
+        </div>
+
         <div class="hero-hud hero-hud--top-right hero-hud--light">
           <div class="hero-hud-visual">
             <svg class="hero-hud-svg" viewBox="0 0 100 70" aria-hidden="true">
@@ -130,6 +149,25 @@
           <div class="hero-hud-label"><span class="hero-hud-dot"></span>Digital Forensics</div>
           <h4 class="hero-hud-title">Evidence Verified</h4>
           <p class="hero-hud-text">Disk image acquired — SHA-256 hash integrity confirmed.</p>
+        </div>
+
+        <div class="hero-hud hero-hud--bottom-right hero-hud--light">
+          <div class="hero-hud-visual">
+            <svg class="hero-hud-svg" viewBox="0 0 100 100" aria-hidden="true">
+              <circle cx="50" cy="50" r="34" class="hw-orbit-path"/>
+              <circle cx="50" cy="50" r="20" class="hw-orbit-path"/>
+              <circle cx="50" cy="50" r="4.2" class="hw-orbit-core"/>
+              <g class="hw-orbit-rotate">
+                <circle cx="50" cy="16" r="2.8" class="hw-orbit-node"/>
+              </g>
+              <g class="hw-orbit-rotate hw-orbit-rotate--reverse">
+                <circle cx="50" cy="30" r="2.2" class="hw-orbit-node hw-orbit-node--gold"/>
+              </g>
+            </svg>
+          </div>
+          <div class="hero-hud-label"><span class="hero-hud-dot"></span>Network Map</div>
+          <h4 class="hero-hud-title">Perimeter Secured</h4>
+          <p class="hero-hud-text">Contained — root cause traced to a misconfigured firewall rule.</p>
         </div>
 
       </div>
