@@ -278,6 +278,7 @@ p { margin: 0; }
 .hero {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
+  grid-template-rows: 1fr auto;
   min-height: calc(100svh - 66px);
   color: var(--paper);
   position: relative;
