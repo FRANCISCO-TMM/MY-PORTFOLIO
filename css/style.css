@@ -160,10 +160,16 @@ p { margin: 0; }
   position: sticky;
   top: 0;
   z-index: 100;
+  border-bottom: 1px solid var(--ink-line);
+}
+.site-nav::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   backdrop-filter: blur(14px) saturate(160%);
   -webkit-backdrop-filter: blur(14px) saturate(160%);
   background: rgba(10, 18, 48, 0.74);
-  border-bottom: 1px solid var(--ink-line);
   transition: background 0.4s var(--ease);
 }
 .nav-inner {
@@ -196,8 +202,10 @@ p { margin: 0; }
 .nav-links a {
   position: relative;
   padding-bottom: 4px;
-  opacity: 0.78;
-  transition: opacity 0.4s var(--ease-smooth);
+  color: var(--gold-bright);
+  font-weight: 600;
+  opacity: 0.92;
+  transition: opacity 0.4s var(--ease-smooth), color 0.4s var(--ease-smooth);
 }
 .nav-links a::after {
   content: '';
@@ -210,7 +218,7 @@ p { margin: 0; }
   transform-origin: left;
   transition: transform 0.45s var(--ease-smooth);
 }
-.nav-links a:hover, .nav-links a[aria-current="page"] { opacity: 1; }
+.nav-links a:hover, .nav-links a[aria-current="page"] { opacity: 1; color: var(--paper); }
 .nav-links a:hover::after, .nav-links a[aria-current="page"]::after { transform: scaleX(1); }
 
 .nav-toggle {
@@ -377,7 +385,10 @@ p { margin: 0; }
 
 .hero-visual {
   position: relative;
-  background: #EEE4CC;
+  background:
+    radial-gradient(ellipse 640px 520px at 50% 38%, rgba(212, 175, 55, 0.16), transparent 65%),
+    radial-gradient(ellipse 500px 420px at 85% 95%, rgba(34, 166, 160, 0.10), transparent 60%),
+    linear-gradient(175deg, #0C1638 0%, #0A1230 55%, #081026 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -443,7 +454,10 @@ p { margin: 0; }
   overflow: hidden;
   box-shadow: 0 30px 60px -20px rgba(11,18,32,0.35);
 }
-.avatar-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center 18%; }
+/* FIX: was object-position: top, which cropped the head off in the
+   circular frame. Center it (with a slight upward bias) so the face
+   is fully visible inside the circle. */
+.avatar-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center 8%; }
 .avatar-caption {
   margin-top: 2.8rem;
   text-align: center;
@@ -463,6 +477,8 @@ p { margin: 0; }
   .avatar-caption { flex-direction: row; gap: 0.8em; }
 }
 .avatar-caption .glow { color: var(--gold-deep); }
+.hero-visual .avatar-caption { color: var(--mist); }
+.hero-visual .avatar-caption .glow { color: var(--gold-bright); }
 .avatar-tag {
   position: absolute;
   bottom: 14px; left: 14px; right: 14px;
@@ -1483,6 +1499,10 @@ p { margin: 0; }
 }
 .section--network .wrap { position: relative; z-index: 1; }
 
+/* ---------- About-page bio surface (dark panel behind portrait) ----------
+   FIX: the faint circular watermark behind the bio text now uses
+   images/yourimage1.png as requested. The home page hero/avatar keeps
+   using images/Homepagebackground.jpg — untouched. */
 .bio-surface {
   position: relative;
   color: var(--paper);
@@ -1688,13 +1708,13 @@ p { margin: 0; }
   gap: 0.9rem;
 }
 .audio-block-label {
-  font-family: var(--font-mono);
-  font-size: clamp(0.95rem, 2.8vw, 1.25rem);
-  line-height: 1.5;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 6vw, 2.3rem);
+  line-height: 1.35;
   color: var(--mist);
   display: flex;
   align-items: flex-start;
-  gap: 0.6em;
+  gap: 0.5em;
 }
 .audio-block-label em { color: var(--gold-bright); font-style: italic; }
 .audio-block audio {
@@ -1703,19 +1723,18 @@ p { margin: 0; }
   border-radius: 999px;
 }
 .video-embed {
-  position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
   border-radius: var(--radius-sm);
   overflow: hidden;
   background: #000;
+  display: flex;
+  justify-content: center;
 }
-.video-embed iframe {
-  position: absolute;
-  inset: 0;
+.video-embed video {
+  display: block;
   width: 100%;
-  height: 100%;
-  border: 0;
+  height: auto;
+  max-height: 75vh;
 }
 
 /* ---------- FAQ cards (contact page) ---------- */
@@ -1804,42 +1823,176 @@ p { margin: 0; }
 .footer-links { display: flex; gap: 1.4rem; font-family: var(--font-mono); font-size: 0.78rem; }
 .footer-links a:hover { color: var(--teal-bright); }
 
-/* ---------- Mobile nav ---------- */
+/* ---------- Mobile nav drawer ---------- */
+.nav-drawer-header,
+.nav-contact-card { display: none; }
+
 @media (max-width: 760px) {
   .nav-toggle { display: block; }
+
   .nav-links {
     position: fixed;
-    top: 66px;
-    right: 0;
-    bottom: 0;
+    top: 0;
     left: 0;
-    background-color: #060B1F !important;
+    bottom: 0;
+    width: min(78vw, 300px);
+    right: auto;
+    background: var(--paper);
     flex-direction: column;
-    padding: 2.5rem var(--gutter);
+    align-items: stretch;
+    padding: 3.6rem 0 1.2rem;
     gap: 0;
-    font-size: 1.15rem;
+    font-size: 1rem;
     visibility: hidden;
     pointer-events: none;
     z-index: 9999;
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.38s var(--ease-smooth), visibility 0.38s;
+    box-shadow: 30px 0 60px -20px rgba(10, 18, 48, 0.35);
   }
   .nav-links.open {
     visibility: visible;
     pointer-events: auto;
+    transform: translateX(0);
   }
-  .nav-links a {
-    color: #FFFFFF !important;
-    opacity: 1;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    width: 100%;
-    padding: 1.1rem 1.2rem;
-    margin-bottom: 0.7rem;
+
+  /* Dim + blur the page behind the open drawer */
+  .nav-links::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    left: min(78vw, 300px);
+    background: rgba(10, 18, 48, 0.45);
+    backdrop-filter: blur(2px);
+    z-index: -1;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.38s var(--ease-smooth);
+  }
+  .nav-links.open::after { opacity: 1; pointer-events: auto; }
+
+  /* Crest / brand header inside the drawer */
+  .nav-drawer-header {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0 1.1rem 1rem;
+    margin-bottom: 0.3rem;
+    border-bottom: 1px solid var(--paper-line);
+  }
+  .nav-drawer-crest {
+    width: 36px;
+    height: 36px;
     border-radius: 10px;
-    border-bottom: none;
-    background-color: #16224A !important;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 0 6px 14px -6px rgba(10, 18, 48, 0.4);
   }
-  .nav-links a:hover, .nav-links a[aria-current="page"] { color: #060B1F !important; background-color: #F1D27A !important; }
+  .nav-drawer-crest img { width: 100%; height: 100%; object-fit: cover; }
+  .nav-drawer-heading { display: flex; flex-direction: column; gap: 0.1rem; min-width: 0; }
+  .nav-drawer-name {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .nav-drawer-tag {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--teal);
+  }
+
+  /* Nav rows */
+  .nav-links a {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    color: var(--ink);
+    opacity: 1;
+    font-weight: 600;
+    font-size: 0.92rem;
+    letter-spacing: 0.01em;
+    width: auto;
+    margin: 0.05rem 0.7rem;
+    padding: 0.6rem 0.8rem;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    border-bottom: none;
+  }
+  .nav-links a::after { display: none; }
+  .nav-icon { font-size: 1rem; line-height: 1; flex-shrink: 0; }
+  .nav-label { flex: 1; }
+  .nav-links a:hover { background: var(--paper-dim); }
+  .nav-links a[aria-current="page"] {
+    background: rgba(212, 175, 55, 0.14);
+    color: var(--gold-deep);
+  }
+  .nav-links a[aria-current="page"] .nav-icon { filter: saturate(1.3); }
+
+  /* Contact / help card pinned near the bottom of the drawer */
+  .nav-contact-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    margin: 1rem 0.7rem 0;
+    padding: 1.05rem 1rem;
+    border-radius: var(--radius-md);
+    background: linear-gradient(160deg, var(--ink-soft) 0%, var(--ink) 100%);
+    color: var(--paper);
+    position: relative;
+    overflow: hidden;
+  }
+  .nav-contact-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 220px 160px at 90% -10%, rgba(212,175,55,0.22), transparent 65%);
+    pointer-events: none;
+  }
+  .nav-contact-icon {
+    font-size: 1.05rem;
+    width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 8px;
+    background: rgba(212,175,55,0.14);
+    border: 1px solid rgba(212,175,55,0.3);
+  }
+  .nav-contact-card strong {
+    font-family: var(--font-display);
+    font-size: 0.88rem;
+    font-weight: 600;
+    position: relative;
+  }
+  .nav-contact-card p {
+    font-size: 0.7rem;
+    line-height: 1.5;
+    color: var(--mist);
+    position: relative;
+  }
+  .nav-contact-card .nav-contact-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45em;
+    align-self: flex-start;
+    width: auto;
+    margin: 0.2rem 0 0;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+    background: linear-gradient(120deg, var(--gold-deep), var(--gold-bright));
+    padding: 0.5em 0.9em;
+    border-radius: 999px;
+    position: relative;
+  }
+  .nav-contact-card .nav-contact-pill:hover { background: linear-gradient(120deg, var(--gold-bright), var(--gold-deep)); }
 }
 
 /* ---------- Page intro (About/Projects/Planner/Contact headers) ---------- */
