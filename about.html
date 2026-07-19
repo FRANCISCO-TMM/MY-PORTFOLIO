@@ -130,13 +130,13 @@
               <tr>
                 <td class="institution"><strong>Reformed Combined Secondary School</strong><span>Taraba, Nigeria</span></td>
                 <td><span class="pill pill-mist">WAEC / SSCE</span></td>
-                <td>2014 – 2019</td>
+                <td>2013 – 2019</td>
                 <td><span class="pill pill-brass">8 Credits</span></td>
               </tr>
               <tr>
                 <td class="institution"><strong>St. Martin's Bright Future Academy, Primary School, Takum</strong><span>Taraba, Nigeria</span></td>
                 <td><span class="pill pill-mist">FSLC</span></td>
-                <td>2011 – 2017</td>
+                <td>2008 – 2013</td>
                 <td><span class="pill pill-brass">Distinction</span></td>
               </tr>
             </tbody>
@@ -154,23 +154,29 @@
             <h2 style="font-size:1.9rem;">My Proficiency</h2>
           </div>
           <div class="skill-bars">
-            <div class="skill-bar-row">
-              <div class="skill-bar-label"><span>Digital Forensics &amp; Incident Response (DFIR)</span><span class="skill-level">Advanced</span></div>
+            <div class="skill-bar-row" style="--fill:85%;">
+              <div class="skill-bar-label"><span>Digital Forensics &amp; Incident Response (DFIR)</span><span>Advanced</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
             </div>
-            <div class="skill-bar-row">
-              <div class="skill-bar-label"><span>SOC Analysis &amp; Network Monitoring</span><span class="skill-level">Advanced</span></div>
+            <div class="skill-bar-row" style="--fill:85%;">
+              <div class="skill-bar-label"><span>SOC Analysis &amp; Network Monitoring</span><span>Advanced</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
             </div>
-            <div class="skill-bar-row">
-              <div class="skill-bar-label"><span>Threat Intelligence &amp; Analysis</span><span class="skill-level">Intermediate</span></div>
+            <div class="skill-bar-row" style="--fill:65%;">
+              <div class="skill-bar-label"><span>Threat Intelligence &amp; Analysis</span><span>Intermediate</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
             </div>
-            <div class="skill-bar-row">
-              <div class="skill-bar-label"><span>Linux &amp; Command Line</span><span class="skill-level">Intermediate</span></div>
+            <div class="skill-bar-row" style="--fill:60%;">
+              <div class="skill-bar-label"><span>Linux &amp; Command Line</span><span>Intermediate</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
             </div>
-            <div class="skill-bar-row">
-              <div class="skill-bar-label"><span>Git &amp; Version Control</span><span class="skill-level">Intermediate</span></div>
+            <div class="skill-bar-row" style="--fill:55%;">
+              <div class="skill-bar-label"><span>Git &amp; Version Control</span><span>Intermediate</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
             </div>
-            <div class="skill-bar-row">
-              <div class="skill-bar-label"><span>Python</span><span class="skill-level">Beginner</span></div>
+            <div class="skill-bar-row" style="--fill:35%;">
+              <div class="skill-bar-label"><span>Python</span><span>Beginner</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
             </div>
           </div>
         </div>
@@ -289,5 +295,17 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    // Animate skill bars into view (matches the site's data-reveal fade/blur motion)
+    document.addEventListener('DOMContentLoaded', () => {
+      const bars = document.querySelectorAll('.skill-bar-row');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('is-visible');
+        });
+      }, { threshold: 0.3 });
+      bars.forEach(bar => io.observe(bar));
+    });
+  </script>
 </body>
 </html>
