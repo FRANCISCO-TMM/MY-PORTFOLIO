@@ -154,28 +154,28 @@
             <h2 style="font-size:1.9rem;">My Proficiency</h2>
           </div>
           <div class="skill-bars">
-            <div class="skill-bar-row" style="--fill:85%;">
-              <div class="skill-bar-label"><span>Digital Forensics &amp; Incident Response (DFIR)</span><span>Advanced</span></div>
+            <div class="skill-bar-row" data-fill="85%">
+              <div class="skill-bar-label"><span>Digital Forensics &amp; Incident Response (DFIR)</span><span>0%</span></div>
               <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
             </div>
-            <div class="skill-bar-row" style="--fill:85%;">
-              <div class="skill-bar-label"><span>SOC Analysis &amp; Network Monitoring</span><span>Advanced</span></div>
+            <div class="skill-bar-row" data-fill="90%">
+              <div class="skill-bar-label"><span>SOC Analysis &amp; Network Monitoring</span><span>0%</span></div>
               <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
             </div>
-            <div class="skill-bar-row" style="--fill:65%;">
-              <div class="skill-bar-label"><span>Threat Intelligence &amp; Analysis</span><span>Intermediate</span></div>
+            <div class="skill-bar-row" data-fill="72%">
+              <div class="skill-bar-label"><span>Threat Intelligence &amp; Analysis</span><span>0%</span></div>
               <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
             </div>
-            <div class="skill-bar-row" style="--fill:60%;">
-              <div class="skill-bar-label"><span>Linux &amp; Command Line</span><span>Intermediate</span></div>
+            <div class="skill-bar-row" data-fill="65%">
+              <div class="skill-bar-label"><span>Linux &amp; Command Line</span><span>0%</span></div>
               <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
             </div>
-            <div class="skill-bar-row" style="--fill:55%;">
-              <div class="skill-bar-label"><span>Git &amp; Version Control</span><span>Intermediate</span></div>
+            <div class="skill-bar-row" data-fill="70%">
+              <div class="skill-bar-label"><span>Git &amp; Version Control</span><span>0%</span></div>
               <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
             </div>
-            <div class="skill-bar-row" style="--fill:35%;">
-              <div class="skill-bar-label"><span>Python</span><span>Beginner</span></div>
+            <div class="skill-bar-row" data-fill="50%">
+              <div class="skill-bar-label"><span>Python</span><span>0%</span></div>
               <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
             </div>
           </div>
@@ -295,51 +295,5 @@
   </footer>
 
   <script src="js/main.js"></script>
-  <script>
-    // Animate skill bars into view, chained AFTER the parent's own
-    // data-reveal fade/blur finishes — otherwise the width transition
-    // plays out while the bar is still invisible (opacity: 0) and you
-    // just see a fully-filled bar "pop" in with no visible blend.
-    document.addEventListener('DOMContentLoaded', () => {
-      const bars = document.querySelectorAll('.skill-bar-row');
-
-      const startFill = (bar) => {
-        // small stagger so bars don't all snap at once
-        const delay = 120 * Array.from(bar.parentElement.children).indexOf(bar);
-        setTimeout(() => bar.classList.add('is-visible'), delay);
-      };
-
-      bars.forEach((bar) => {
-        const revealParent = bar.closest('[data-reveal]');
-
-        if (revealParent) {
-          // If the parent has already revealed (e.g. page loaded scrolled down), fire right away
-          if (revealParent.classList.contains('is-visible')) {
-            startFill(bar);
-            return;
-          }
-          // Otherwise wait for the parent to pick up its own is-visible class
-          const mo = new MutationObserver(() => {
-            if (revealParent.classList.contains('is-visible')) {
-              mo.disconnect();
-              startFill(bar);
-            }
-          });
-          mo.observe(revealParent, { attributes: true, attributeFilter: ['class'] });
-        } else {
-          // No data-reveal ancestor — just fill when scrolled into view
-          const io = new IntersectionObserver((entries, obs) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                startFill(bar);
-                obs.unobserve(bar);
-              }
-            });
-          }, { threshold: 0.3 });
-          io.observe(bar);
-        }
-      });
-    });
-  </script>
 </body>
 </html>
